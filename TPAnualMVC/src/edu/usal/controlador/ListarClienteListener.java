@@ -7,11 +7,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import edu.usal.dao.factory.ClienteFactory;
-import edu.usal.dao.factory.LineasAereasFactory;
 import edu.usal.dao.interfaces.ClienteInterfaz;
-import edu.usal.dao.interfaces.LineasAereasInterfaz;
+import edu.usal.negocio.dominio.Cliente;
 import edu.usal.vista.ListarClientes;
-import edu.usal.vista.ListarLinea;
 import edu.usal.vista.Mensajes;
 
 public class ListarClienteListener implements ActionListener{
@@ -30,7 +28,7 @@ public class ListarClienteListener implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-		ArrayList<String> lista = new ArrayList<String>();
+		ArrayList<Cliente> lista = new ArrayList<Cliente>();
 		
 		try {
 			
@@ -40,11 +38,14 @@ public class ListarClienteListener implements ActionListener{
 			e1.printStackTrace();
 		}
 		
+		listarCliente.modelo.removeAllElements();
+		
 		String datos = "";
 		
 		for(int i=0;i<lista.size() ;i++) {
-			datos = lista.get(i);
-			//System.out.println(datos);
+			
+			datos = lista.get(i).getInfo();
+			
 			
 		listarCliente.modelo.addElement(datos);
 		

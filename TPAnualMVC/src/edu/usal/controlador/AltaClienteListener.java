@@ -7,7 +7,15 @@ import java.sql.Date;
 import java.sql.SQLException;
 
 import edu.usal.dao.factory.ClienteFactory;
+import edu.usal.dao.factory.DireccionFactory;
+import edu.usal.dao.factory.PasajeroFrecuenteFactory;
+import edu.usal.dao.factory.PasaporteFactory;
+import edu.usal.dao.factory.TelefonoFactory;
 import edu.usal.dao.interfaces.ClienteInterfaz;
+import edu.usal.dao.interfaces.DireccionInterfaz;
+import edu.usal.dao.interfaces.PasajeroFrecuenteInterfaz;
+import edu.usal.dao.interfaces.PasaporteInterfaz;
+import edu.usal.dao.interfaces.TelefonoInterfaz;
 import edu.usal.negocio.dominio.Cliente;
 import edu.usal.negocio.dominio.Direccion;
 import edu.usal.negocio.dominio.PasajeroFrecuente;
@@ -21,9 +29,18 @@ public class AltaClienteListener implements ActionListener{
 	Mensajes mensaje;
 	AltaCliente altaCliente;
 	ClienteInterfaz cliInter;
+	TelefonoInterfaz telefonoInterfaz;
+	PasaporteInterfaz pasaporteInterfaz;
+	DireccionInterfaz direccionInterfaz;
+	PasajeroFrecuenteInterfaz pasajeroFrecuenteInterfaz;
 
 	public AltaClienteListener() throws IOException{
 		cliInter = ClienteFactory.GetImplementation("MSSQL");
+		telefonoInterfaz = TelefonoFactory.GetImplementation("MSSQL");
+		pasaporteInterfaz = PasaporteFactory.GetImplementation("MSSQL");
+		direccionInterfaz = DireccionFactory.GetImplementation("MSSQL");
+		pasajeroFrecuenteInterfaz = PasajeroFrecuenteFactory.GetImplementation("MSSQL");
+		
 		altaCliente = Controlador.altaCliente;
 		mensaje = new Mensajes();
 
@@ -38,7 +55,7 @@ public class AltaClienteListener implements ActionListener{
 		
 		try {
 			
-		Cliente cliente = new Cliente("", "", "", "", null, null, null, null, null);
+		Cliente cliente = new Cliente("", "", "", "", null, 0, 0, 0, 0);
 		PasajeroFrecuente pasajeroFrecuente = new PasajeroFrecuente("", "", "", "");
 		Pasaporte pasaporte = new Pasaporte("", "", "", null, null);
 		Direccion direccion = new Direccion("", "", "", "", "", "");
@@ -56,16 +73,19 @@ public class AltaClienteListener implements ActionListener{
 		pasajeroFrecuente.setAlianza(altaCliente.tAlianza.getText());
 		pasajeroFrecuente.setCategoria(altaCliente.tCategoriaFrec.getText());
 		pasajeroFrecuente.setNumero(altaCliente.tNumeroFrec.getText());
+		int pasajeroFrecuenteId = pasajeroFrecuenteInterfaz.AltaPasajeroFrecuente(pasajeroFrecuente);
 		
 		pasaporte.setAutoridad(altaCliente.tAutoridad.getText());
 		pasaporte.setNumero(altaCliente.tNumeroPas.getText());
 		pasaporte.setPais(altaCliente.paisEmic.getSelectedItem().toString());
-	
+		
 		
 		Date d2 = Date.valueOf(altaCliente.tFechaEmic.getText());
 		//Date d3 = Date.valueOf(altaCliente.tFechaVen.getText());
 		pasaporte.setFechaEmision(d1);
 		pasaporte.setFechaVencimiento(d2);
+		int pasaporteId = pasaporteInterfaz.AltaPasaporte(pasaporte);
+		
 		
 		telefono.setCelular(altaCliente.tCelular.getText());
 		telefono.setLaboral(altaCliente.tLaboral.getText());
@@ -76,7 +96,7 @@ public class AltaClienteListener implements ActionListener{
 		direccion.setCiudad(altaCliente.tCiudad.getText());
 		direccion.setCodigo(altaCliente.tCodPostal.getText());
 		direccion.setPais(altaCliente.paisDir.getSelectedItem().toString());
-		
+
 	//	altaCliente.addListener2(new paisListener());
 		
 		if(direccion.getPais().equals("Argentina")) {
@@ -87,15 +107,18 @@ public class AltaClienteListener implements ActionListener{
 			direccion.setProvincia(altaCliente.provincia2.getText());
 		}
 		
+		int direccionId = direccionInterfaz.AltaDireccion(direccion);
+
 		
-		cliente.setPasajeroFrecuente(pasajeroFrecuente);
-		cliente.setPasaporte(pasaporte);
-		cliente.setTelefono(telefono);
-		cliente.setDireccion(direccion);
+		cliente.setIdPasajeroFrecuente(pasajeroFrecuenteId);
+		cliente.setIdPasaporte(pasaporteId);
+		cliente.setIdDireccion(direccionId);
+		
+		cliente.setIdTelefono(telefonoInterfaz.getTelefono());
 		
 		
-		
-			cliInter.AltaCliente(cliente);
+		cliInter.AltaCliente(cliente);
+			
 			mensaje.Realizado();
 		
 		} catch (SQLException e1) {

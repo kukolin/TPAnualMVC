@@ -36,10 +36,13 @@ public class Controlador extends JFrame implements ActionListener{
 	private Frame frame;
 	
 	public Controlador(Frame frame) throws IOException, SQLException {
+		
 		linInter = LineasAereasFactory.GetImplementation("MSSQL");
 		cliInter = ClienteFactory.GetImplementation("MSSQL");
 		vueInter = VuelosFactory.GetImplementation("MSSQL");
 		venInter = VentasFactory.GetImplementation("MSSQL");
+		
+		
 		
 		this.frame = frame;
 		
@@ -52,7 +55,6 @@ public class Controlador extends JFrame implements ActionListener{
 		 bajaCliente = new BajaCliente();
 		 altaVentas = new AltaVentas();
 		 listarClientes = new ListarClientes();
-
 		
 	}
 
@@ -60,7 +62,9 @@ public class Controlador extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		
-		
+
+
+
 		if(arg0.getSource() == this.frame.mntmSalir) {
 			System.exit(0);
 		}

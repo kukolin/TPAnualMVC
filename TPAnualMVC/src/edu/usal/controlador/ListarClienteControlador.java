@@ -6,20 +6,24 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import edu.usal.dao.factory.ClienteFactory;
 import edu.usal.dao.factory.LineasAereasFactory;
+import edu.usal.dao.interfaces.ClienteInterfaz;
 import edu.usal.dao.interfaces.LineasAereasInterfaz;
+import edu.usal.negocio.dominio.Cliente;
+import edu.usal.vista.ListarClientes;
 import edu.usal.vista.ListarLinea;
 import edu.usal.vista.Mensajes;
 
-public class ListarLineaListener implements ActionListener{
+public class ListarClienteControlador implements ActionListener{
 	
 	Mensajes mensaje;
-	ListarLinea listarLinea;
-	LineasAereasInterfaz linInter;
+	ListarClientes listarCliente;
+	ClienteInterfaz clienteInterfaz;
 	
-	public ListarLineaListener() throws IOException{
-		linInter = LineasAereasFactory.GetImplementation("MSSQL");
-		listarLinea = Controlador.listarLinea;
+	public ListarClienteControlador() throws IOException{
+		clienteInterfaz = ClienteFactory.GetImplementation("MSSQL");
+		listarCliente = Controlador.listarClientes;
 		mensaje = new Mensajes();
 
 	}
@@ -27,11 +31,11 @@ public class ListarLineaListener implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-		ArrayList<String> lista = new ArrayList<String>();
+		ArrayList<Cliente> lista = new ArrayList<Cliente>();
 		
 		try {
 			
-			lista = linInter.ListarLineas();
+			lista = clienteInterfaz.ListarClientes();
 			
 		} catch (SQLException e1) {
 			e1.printStackTrace();
@@ -39,13 +43,13 @@ public class ListarLineaListener implements ActionListener{
 		
 		String datos = "";
 		
-		listarLinea.modelo.removeAllElements();
-		
 		for(int i=0;i<lista.size() ;i++) {
-			datos = lista.get(i);
-			//System.out.println(datos);
+			lista.get(i).toString();			
 			
-		listarLinea.modelo.addElement(datos);
+			
+			
+			
+		listarCliente.modelo.addElement(datos);
 		
 		}
 		mensaje.Realizado();
