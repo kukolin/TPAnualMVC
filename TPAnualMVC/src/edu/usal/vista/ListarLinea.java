@@ -1,6 +1,7 @@
 package edu.usal.vista;
 
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.JList;
 
 import java.awt.event.ActionListener;
@@ -8,21 +9,28 @@ import java.awt.event.ActionListener;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.ListSelectionModel;
+import javax.swing.table.DefaultTableModel;
+
+import org.omg.CORBA.PUBLIC_MEMBER;
+
 import java.awt.Color;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import java.awt.Font;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.JScrollPane;
 
 public class ListarLinea extends JPanel {
 	public JButton btnListar;
-	public DefaultListModel modelo;
+	public DefaultTableModel modelo;
+	public JTable tabla;
 
 	/**
 	 * Create the panel.
 	 */
 	public ListarLinea() {
 		
-		modelo = new DefaultListModel();
+		modelo = new DefaultTableModel();
 		
 		setBackground(Color.BLUE);
 		
@@ -31,8 +39,17 @@ public class ListarLinea extends JPanel {
 		btnListar.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnListar.setBackground(new Color(0, 0, 0));
 		
-		JList list = new JList();
-		list.setModel(modelo);
+	
+		modelo.addColumn("Nombre");
+		modelo.addColumn("Alianza");
+		modelo.addColumn("Vuelos");
+		
+		JScrollPane scrollPane = new JScrollPane();
+		
+		
+		
+		
+		
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -40,20 +57,24 @@ public class ListarLinea extends JPanel {
 					.addGap(172)
 					.addComponent(btnListar, GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
 					.addGap(189))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(10)
-					.addComponent(list, GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
-					.addGap(10))
+				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 426, Short.MAX_VALUE)
+					.addContainerGap())
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(11)
 					.addComponent(btnListar)
-					.addGap(11)
-					.addComponent(list, GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
-					.addGap(24))
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
+					.addContainerGap())
 		);
+		
+				
+				tabla = new JTable (modelo);
+				scrollPane.setViewportView(tabla);
 		setLayout(groupLayout);
 
 	}
