@@ -11,7 +11,7 @@ public class Mensajes {
 		JOptionPane.showMessageDialog(null,"Realizado", "Warning", JOptionPane.WARNING_MESSAGE);	
 	}
 	public boolean Edad() {
-		int edad = JOptionPane.showConfirmDialog(null, "Confima tener mas de 18 años?");
+		int edad = JOptionPane.showConfirmDialog(null, "Confirma tener mas de 18 años?");
 		if(edad == JOptionPane.YES_OPTION) {return true;}
 		else return false;
 		
@@ -21,7 +21,7 @@ public class Mensajes {
 	}
 	public void AcercaDe() {
 		
-		JOptionPane.showMessageDialog(null,"Código creado por: \n -Anezin, Lucas \n -Abiela, Juan Mateo\n -Di Gregorio, Fiore \n -Vidal, Augusto \n\n Version 1.2", "Acerca de...", JOptionPane.INFORMATION_MESSAGE);	
+		JOptionPane.showMessageDialog(null,"Código creado por: \n -Anezin, Lucas \n -Ambiela, Juan Mateo\n -Di Gregorio, Fiore \n -Vidal, Augusto \n\n Version 1.2", "Acerca de...", JOptionPane.INFORMATION_MESSAGE);	
 		
 	}
 	

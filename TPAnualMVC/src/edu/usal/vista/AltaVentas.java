@@ -3,6 +3,8 @@ package edu.usal.vista;
 import javax.swing.JPanel;
 
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
@@ -15,38 +17,41 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
+import edu.usal.controlador.ItemsClienteListener;
+import edu.usal.controlador.ItemsVuelos;
+import edu.usal.controlador.VentasListener;
+
+import javax.swing.JComboBox;
+
 public class AltaVentas extends JPanel {
-	public JTextField tidVuelo;
-	public JTextField tidcliente;
-	public JTextField tidLinea;
-	public JTextField tFechaVen;
 	public JRadioButton rdbtnEfectivo;
 	public JRadioButton rdbtnTarjetaCuotas;
 	public JRadioButton rdbtnTarjetaCuotas_1;
 	public JButton btnEnviar;
 	public ButtonGroup grupo;
+	public JComboBox comboClientes;
+	ItemsClienteListener itemsClienteListener;
+	ItemsVuelos itemsVuelos;
+	private JComboBox comboVuelo;
 
 	/**
 	 * Create the panel.
+	 * @throws IOException 
+	 * @throws SQLException 
 	 */
-	public AltaVentas() {
+	public AltaVentas() throws IOException, SQLException {
 		setBackground(new Color(0, 0, 128));
+		itemsClienteListener  = new ItemsClienteListener();
+		itemsVuelos = new ItemsVuelos();
 		
-		JLabel lblIdvuelo = new JLabel("id Vuelo:");
+		
+		JLabel lblIdvuelo = new JLabel("Vuelo:");
 		lblIdvuelo.setForeground(new Color(255, 0, 0));
 		lblIdvuelo.setFont(new Font("Tahoma", Font.BOLD, 11));
 		
-		JLabel lblIdcliente = new JLabel("id Cliente:");
+		JLabel lblIdcliente = new JLabel("Cliente:");
 		lblIdcliente.setForeground(new Color(255, 0, 0));
 		lblIdcliente.setFont(new Font("Tahoma", Font.BOLD, 11));
-		
-		JLabel lblIdLineaAerea = new JLabel("id Linea Aerea:");
-		lblIdLineaAerea.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblIdLineaAerea.setForeground(new Color(255, 0, 0));
-		
-		JLabel lblFechaVenta = new JLabel("Fecha Venta: (yyyy/MM/dd)");
-		lblFechaVenta.setForeground(new Color(255, 0, 0));
-		lblFechaVenta.setFont(new Font("Tahoma", Font.BOLD, 11));
 		
 		JLabel lblFormaDePago = new JLabel("Forma de pago:");
 		lblFormaDePago.setForeground(new Color(255, 0, 0));
@@ -72,94 +77,59 @@ public class AltaVentas extends JPanel {
 		grupo.add(rdbtnEfectivo);
 		grupo.add(rdbtnTarjetaCuotas);
 		grupo.add(rdbtnTarjetaCuotas_1);
-
-		tidVuelo = new JTextField();
-		tidVuelo.setColumns(10);
-		
-		tidcliente = new JTextField();
-		tidcliente.setColumns(10);
-		
-		tidLinea = new JTextField();
-		tidLinea.setColumns(10);
-		
-		tFechaVen = new JTextField();
-		tFechaVen.setColumns(10);
 		
 		btnEnviar = new JButton("Enviar");
 		btnEnviar.setBackground(new Color(0, 0, 0));
 		btnEnviar.setForeground(new Color(255, 0, 0));
 		btnEnviar.setFont(new Font("Tahoma", Font.BOLD, 11));
+		
+		comboClientes = new JComboBox(itemsClienteListener.valores());
+		
+		comboVuelo = new JComboBox(itemsVuelos.valores());
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(32)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(lblIdvuelo, GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
-							.addGap(104)
-							.addComponent(tidVuelo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addGap(152))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(lblIdcliente, GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
-							.addGap(65)
-							.addComponent(tidcliente, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addGap(152))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(lblIdLineaAerea, GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
-							.addGap(28)
-							.addComponent(tidLinea, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addGap(152))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(lblFechaVenta, GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
-							.addGap(4)
-							.addComponent(tFechaVen, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addGap(152))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(lblFormaDePago, GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
+							.addComponent(lblFormaDePago, GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
 							.addGap(182)
 							.addComponent(btnEnviar, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE)
 							.addGap(23))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(rdbtnEfectivo, GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
+							.addComponent(rdbtnEfectivo, GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
 							.addGap(10)
-							.addComponent(rdbtnTarjetaCuotas, GroupLayout.PREFERRED_SIZE, 131, Short.MAX_VALUE)
+							.addComponent(rdbtnTarjetaCuotas, GroupLayout.PREFERRED_SIZE, 147, Short.MAX_VALUE)
 							.addGap(2)
-							.addComponent(rdbtnTarjetaCuotas_1, GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)))
+							.addComponent(rdbtnTarjetaCuotas_1, GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addGroup(groupLayout.createSequentialGroup()
+									.addComponent(lblIdvuelo, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+									.addGap(104))
+								.addGroup(groupLayout.createSequentialGroup()
+									.addComponent(lblIdcliente, GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
+									.addPreferredGap(ComponentPlacement.RELATED)))
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
+								.addComponent(comboVuelo, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(comboClientes, 0, 257, Short.MAX_VALUE))
+							.addGap(49)))
 					.addGap(6))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(41)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(tidVuelo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(3)
-							.addComponent(lblIdvuelo, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addGap(3)))
-					.addGap(20)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(3)
-							.addComponent(lblIdcliente, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addGap(3))
-						.addComponent(tidcliente, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(24)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(3)
-							.addComponent(lblIdLineaAerea, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addGap(3))
-						.addComponent(tidLinea, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(13)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(3)
-							.addComponent(lblFechaVenta, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addGap(3))
-						.addComponent(tFechaVen, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(19)
+					.addGap(44)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblIdvuelo, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(comboVuelo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(26)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblIdcliente, GroupLayout.DEFAULT_SIZE, 16, Short.MAX_VALUE)
+						.addComponent(comboClientes, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(101)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(4)

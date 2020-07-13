@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 import edu.usal.dao.factory.LineasAereasFactory;
@@ -18,12 +19,12 @@ import edu.usal.vista.Mensajes;
 public class ListarLineaListener implements ActionListener{
 	
 	Mensajes mensaje;
-	ListarLinea listarLinea;
+	ListarLinea listarLineaVista;
 	LineasAereasInterfaz linInter;
 	
 	public ListarLineaListener() throws IOException{
 		linInter = LineasAereasFactory.GetImplementation("MSSQL");
-		listarLinea = Controlador.listarLinea;
+		listarLineaVista = new ListarLinea();
 		mensaje = new Mensajes();
 
 	}
@@ -31,42 +32,49 @@ public class ListarLineaListener implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-		ArrayList<LineasAereas> lista = null;
-		
-		try {
-			
-			lista = linInter.ListarLineas();
-			
-		} catch (SQLException e1) {
-			e1.printStackTrace();
-		}
-		
-	//	String datos = "";
-		
-	//	listarLinea.modelo
-		
-        Object[] object = new Object[lista.size()];
-                
-		listarLinea.modelo = (DefaultTableModel) listarLinea.tabla.getModel();
-		
-        listarLinea.modelo.setRowCount(0);
-		
-        if (lista.size() != 0) {
-           for (int i = 0; i < object.length; i++) {
-            	
-                object[0] = lista.get(i).getNombre();
-                object[1] = lista.get(i).getAlianza();
-                object[2] = lista.get(i).getVuelos();
-                
-        		listarLinea.modelo.addRow(object);
-        		
+//		ArrayList<LineasAereas> lista = null;
+//		
+//			
+//			try {
+//				lista = linInter.ListarLineas();
+//			} catch (SQLException e1) {
+//				e1.printStackTrace();
+//			}
+//			
+//		
+//        Object[] object = new Object[lista.size()];
+//                
+//		listarLineaVista.modelo = (DefaultTableModel) listarLineaVista.tabla.getModel();
+//		
+//        listarLineaVista.modelo.setRowCount(0);
+//		
+//        if (lista.size() != 0) {
+//           for (int i = 0; i < object.length; i++) {
+//            	
+//                object[0] = lista.get(i).getNombre();
+//                object[1] = lista.get(i).getAlianza();
+//                object[2] = lista.get(i).getVuelos();
+//                
+//        		listarLineaVista.modelo.addRow(object);
+//        		
+//        //		System.out.println(lista.get(i).getNombre());
+//
+//            }
+//   		
+//
+//        }
+// 
+//   		mensaje.Realizado();
 
-            }
-        }
-        
-
-
-		mensaje.Realizado();
+		
+//		Vector<String> aStrings = new Vector<String>();
+//		aStrings.add("F");
+//		listarLineaVista.modelo = (DefaultTableModel) listarLineaVista.tabla.getModel();
+//		listarLineaVista.modelo.setRowCount(0);
+//		listarLineaVista.modelo.addRow(aStrings);
+//		listarLineaVista.tabla.repaint();
+//		mensaje.Realizado();
+		
 		
 	}
 }

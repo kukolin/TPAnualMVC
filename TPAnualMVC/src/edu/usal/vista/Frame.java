@@ -1,7 +1,5 @@
 package edu.usal.vista;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -9,7 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import edu.usal.controlador.Controlador;
+import edu.usal.controlador.MenuListener;
 
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -59,7 +57,6 @@ public class Frame extends JFrame {
 	 */
 	public Frame() throws IOException, SQLException {
 		
-		Controlador controlador = new Controlador(this);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 549, 430);
@@ -72,63 +69,51 @@ public class Frame extends JFrame {
 		menuBar.add(mnNewMenu);
 		
 		mntmAcercaDe = new JMenuItem("Acerca de...");
-		mntmAcercaDe.addActionListener(controlador);
 		mnNewMenu.add(mntmAcercaDe);
 		
 		mntmSalir = new JMenuItem("Salir");
-		mntmSalir.addActionListener(controlador);
 		mnNewMenu.add(mntmSalir);
 		
 		mnNewMenu_1 = new JMenu("Clientes");
 		menuBar.add(mnNewMenu_1);
 		
 		mntmAltaCliente = new JMenuItem("Alta Cliente");
-		mntmAltaCliente.addActionListener(controlador);
 		mnNewMenu_1.add(mntmAltaCliente);
 		
 		mntmBajaCliente = new JMenuItem("Baja Cliente");
-		mntmBajaCliente.addActionListener(controlador);
 		mnNewMenu_1.add(mntmBajaCliente);
 		
 		mntmListarClientes = new JMenuItem("Listar Clientes");
-		mntmListarClientes.addActionListener(controlador);
 		mnNewMenu_1.add(mntmListarClientes);
 		
 		mnLineasAereas = new JMenu("Lineas Aereas");
 		menuBar.add(mnLineasAereas);
 		
 		mntmAltaDeLineas = new JMenuItem("Alta de Lineas");
-		mntmAltaDeLineas.addActionListener(controlador);
 		mnLineasAereas.add(mntmAltaDeLineas);
 		
 		mntmBajaDeLineas = new JMenuItem("Baja de Lineas");
-		mntmBajaDeLineas.addActionListener(controlador);
 		mnLineasAereas.add(mntmBajaDeLineas);
 		
 		mntmListarLineas = new JMenuItem("Listar Lineas");
-		mntmListarLineas.addActionListener(controlador);
 		mnLineasAereas.add(mntmListarLineas);
 		
 		mnVuelos = new JMenu("Vuelos");
 		menuBar.add(mnVuelos);
 		
 		mntmAltaDeVuelos = new JMenuItem("Alta de Vuelos");
-		mntmAltaDeVuelos.addActionListener(controlador);
 		mnVuelos.add(mntmAltaDeVuelos);
 		
 		mntmBajaDeVuelos = new JMenuItem("Baja de Vuelos");
-		mntmBajaDeVuelos.addActionListener(controlador);
 		mnVuelos.add(mntmBajaDeVuelos);
 		
 		mntmListarVuelos = new JMenuItem("Listar Vuelos");
-		mntmListarVuelos.addActionListener(controlador);
 		mnVuelos.add(mntmListarVuelos);
 		
 		mnVentas = new JMenu("Ventas");
 		menuBar.add(mnVentas);
 		
 		mntmVentas = new JMenuItem("Ventas");
-		mntmVentas.addActionListener(controlador);
 		mnVentas.add(mntmVentas);
 		
 		contentPane = new JPanel();
@@ -180,5 +165,20 @@ public class Frame extends JFrame {
 					.addContainerGap())
 		);
 		panel.setLayout(gl_panel);
+	}
+	
+	public void addActionListeners(MenuListener menuListener) {
+
+		mntmAcercaDe.addActionListener(menuListener);
+		mntmSalir.addActionListener(menuListener);
+		mntmAltaCliente.addActionListener(menuListener);
+		mntmAltaDeLineas.addActionListener(menuListener);
+		mntmBajaCliente.addActionListener(menuListener);
+		mntmBajaDeLineas.addActionListener(menuListener);
+		mntmListarClientes.addActionListener(menuListener);
+		mntmListarLineas.addActionListener(menuListener);
+		mntmVentas.addActionListener(menuListener);
+		
+		
 	}
 }

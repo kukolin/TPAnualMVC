@@ -18,7 +18,7 @@ public class BajaClienteListener implements ActionListener{
 	
 	public BajaClienteListener() throws IOException{
 		cliInter = ClienteFactory.GetImplementation("MSSQL");
-		bajaCliente = Controlador.bajaCliente;
+		bajaCliente = new BajaCliente();
 		mensaje = new Mensajes();
 
 	}

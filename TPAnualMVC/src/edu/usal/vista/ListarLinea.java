@@ -2,16 +2,15 @@ package edu.usal.vista;
 
 import javax.swing.JPanel;
 import javax.swing.JTable;
-import javax.swing.JList;
 
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
-import javax.swing.DefaultListModel;
 import javax.swing.JButton;
-import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
-import org.omg.CORBA.PUBLIC_MEMBER;
+
+import edu.usal.controlador.AgregarItemsLinea;
 
 import java.awt.Color;
 import javax.swing.GroupLayout;
@@ -24,29 +23,22 @@ public class ListarLinea extends JPanel {
 	public JButton btnListar;
 	public DefaultTableModel modelo;
 	public JTable tabla;
+	public AgregarItemsLinea agregarItemsLinea;
 
 	/**
 	 * Create the panel.
+	 * @throws IOException 
 	 */
-	public ListarLinea() {
-		
-		modelo = new DefaultTableModel();
-		
-		setBackground(Color.BLUE);
-		
-		btnListar = new JButton("Listar");
+	public ListarLinea() throws IOException {
+		agregarItemsLinea = new AgregarItemsLinea();
+		modelo = agregarItemsLinea.items();
+		setBackground(new Color(0, 0, 128));
+		btnListar = new JButton("Actualizar");
 		btnListar.setForeground(new Color(255, 0, 0));
 		btnListar.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnListar.setBackground(new Color(0, 0, 0));
-		
-	
-		modelo.addColumn("Nombre");
-		modelo.addColumn("Alianza");
-		modelo.addColumn("Vuelos");
-		
+
 		JScrollPane scrollPane = new JScrollPane();
-		
-		
 		
 		
 		

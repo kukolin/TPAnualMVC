@@ -21,7 +21,7 @@ import javax.swing.GroupLayout.Alignment;
 import java.awt.Font;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
-public class AltaCliente extends JPanel {
+public class AltaClienteVista extends JPanel {
 	public JTextField tNombre;
 	public JTextField tDni;
 	public JTextField tNumeroPas;
@@ -48,7 +48,7 @@ public class AltaCliente extends JPanel {
 	public JComboBox provincias;
 	public JTextField provincia2;
 
-	public AltaCliente() throws IOException, SQLException {
+	public AltaClienteVista() throws IOException, SQLException {
 		setBackground(new Color(0, 0, 128));
 		
 		JLabel lblNombre = new JLabel("Nombre: ");

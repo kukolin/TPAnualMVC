@@ -18,7 +18,7 @@ public class BajaLineaListener implements ActionListener{
 	
 	public BajaLineaListener() throws IOException{
 		linInter = LineasAereasFactory.GetImplementation("MSSQL");
-		bajaLinea = Controlador.bajaLinea;
+		bajaLinea = new BajaLinea();
 		mensaje = new Mensajes();
 
 	}

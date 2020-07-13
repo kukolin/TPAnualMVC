@@ -2,23 +2,26 @@ package edu.usal.controlador;
 
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.io.IOException;
+import java.sql.SQLException;
 
-import edu.usal.vista.AltaCliente;
+import edu.usal.vista.AltaClienteVista;
 
 public class paisListener implements ItemListener{
 	
-	AltaCliente altaCliente;
+	AltaClienteVista altaCliente;
 	
 	public paisListener() {
-		altaCliente = Controlador.altaCliente;
+		try {
+			altaCliente = new AltaClienteVista();
+		} catch (IOException | SQLException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@Override
 	public void itemStateChanged(ItemEvent e) {
 		
-		//mensaje.Realizado();
-	//	JOptionPane.showMessageDialog(null,e.getItem().toString(), "Error", JOptionPane.ERROR_MESSAGE);	
-
 		
 		if(e.getItem().toString().trim().equals("Argentina")) {
 			

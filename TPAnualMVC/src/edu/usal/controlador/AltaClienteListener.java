@@ -21,27 +21,27 @@ import edu.usal.negocio.dominio.Direccion;
 import edu.usal.negocio.dominio.PasajeroFrecuente;
 import edu.usal.negocio.dominio.Pasaporte;
 import edu.usal.negocio.dominio.Telefono;
-import edu.usal.vista.AltaCliente;
+import edu.usal.vista.AltaClienteVista;
 import edu.usal.vista.Mensajes;
 
 public class AltaClienteListener implements ActionListener{
 	
 	Mensajes mensaje;
-	AltaCliente altaCliente;
+	AltaClienteVista altaClienteVista;
 	ClienteInterfaz cliInter;
 	TelefonoInterfaz telefonoInterfaz;
 	PasaporteInterfaz pasaporteInterfaz;
 	DireccionInterfaz direccionInterfaz;
 	PasajeroFrecuenteInterfaz pasajeroFrecuenteInterfaz;
 
-	public AltaClienteListener() throws IOException{
+	public AltaClienteListener() throws IOException, SQLException{
 		cliInter = ClienteFactory.GetImplementation("MSSQL");
 		telefonoInterfaz = TelefonoFactory.GetImplementation("MSSQL");
 		pasaporteInterfaz = PasaporteFactory.GetImplementation("MSSQL");
 		direccionInterfaz = DireccionFactory.GetImplementation("MSSQL");
 		pasajeroFrecuenteInterfaz = PasajeroFrecuenteFactory.GetImplementation("MSSQL");
-		
-		altaCliente = Controlador.altaCliente;
+		altaClienteVista = new AltaClienteVista();
+//		altaCliente = Controlador.altaCliente;
 		mensaje = new Mensajes();
 
 	}
@@ -50,61 +50,61 @@ public class AltaClienteListener implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-		if(altaCliente.tDni.getText().matches("[0-9]+") && altaCliente.tCuit.getText().matches("[0-9]+"))
+		if(altaClienteVista.tDni.getText().matches("[0-9]+") && altaClienteVista.tCuit.getText().matches("[0-9]+"))
 		{
 		
 		try {
 			
-		Cliente cliente = new Cliente("", "", "", "", null, 0, 0, 0, 0);
+		Cliente cliente = new Cliente(0,"", "", "", "", null, 0, 0, 0, 0);
 		PasajeroFrecuente pasajeroFrecuente = new PasajeroFrecuente("", "", "", "");
 		Pasaporte pasaporte = new Pasaporte("", "", "", null, null);
 		Direccion direccion = new Direccion("", "", "", "", "", "");
 		Telefono telefono = new Telefono("", "", "");
 		
-		cliente.setNombreyApellido(altaCliente.tNombre.getText());
-		cliente.setCuit_cuil(altaCliente.tCuit.getText());
-		cliente.setDni(altaCliente.tDni.getText());
-		cliente.setEmail(altaCliente.tEmail.getText());
+		cliente.setNombreyApellido(altaClienteVista.tNombre.getText());
+		cliente.setCuit_cuil(altaClienteVista.tCuit.getText());
+		cliente.setDni(altaClienteVista.tDni.getText());
+		cliente.setEmail(altaClienteVista.tEmail.getText());
 		
-		Date d1 = Date.valueOf(altaCliente.tFechaNac.getText());			
+		Date d1 = Date.valueOf(altaClienteVista.tFechaNac.getText());			
 		cliente.setFechaNac(d1);
 		
-		pasajeroFrecuente.setAerolinea(altaCliente.tAerolinea.getText());
-		pasajeroFrecuente.setAlianza(altaCliente.tAlianza.getText());
-		pasajeroFrecuente.setCategoria(altaCliente.tCategoriaFrec.getText());
-		pasajeroFrecuente.setNumero(altaCliente.tNumeroFrec.getText());
+		pasajeroFrecuente.setAerolinea(altaClienteVista.tAerolinea.getText());
+		pasajeroFrecuente.setAlianza(altaClienteVista.tAlianza.getText());
+		pasajeroFrecuente.setCategoria(altaClienteVista.tCategoriaFrec.getText());
+		pasajeroFrecuente.setNumero(altaClienteVista.tNumeroFrec.getText());
 		int pasajeroFrecuenteId = pasajeroFrecuenteInterfaz.AltaPasajeroFrecuente(pasajeroFrecuente);
 		
-		pasaporte.setAutoridad(altaCliente.tAutoridad.getText());
-		pasaporte.setNumero(altaCliente.tNumeroPas.getText());
-		pasaporte.setPais(altaCliente.paisEmic.getSelectedItem().toString());
+		pasaporte.setAutoridad(altaClienteVista.tAutoridad.getText());
+		pasaporte.setNumero(altaClienteVista.tNumeroPas.getText());
+		pasaporte.setPais(altaClienteVista.paisEmic.getSelectedItem().toString());
 		
 		
-		Date d2 = Date.valueOf(altaCliente.tFechaEmic.getText());
+		Date d2 = Date.valueOf(altaClienteVista.tFechaEmic.getText());
 		//Date d3 = Date.valueOf(altaCliente.tFechaVen.getText());
 		pasaporte.setFechaEmision(d1);
 		pasaporte.setFechaVencimiento(d2);
 		int pasaporteId = pasaporteInterfaz.AltaPasaporte(pasaporte);
 		
 		
-		telefono.setCelular(altaCliente.tCelular.getText());
-		telefono.setLaboral(altaCliente.tLaboral.getText());
-		telefono.setPersonal(altaCliente.tPersonal.getText());
+		telefono.setCelular(altaClienteVista.tCelular.getText());
+		telefono.setLaboral(altaClienteVista.tLaboral.getText());
+		telefono.setPersonal(altaClienteVista.tPersonal.getText());
 		
-		direccion.setAltura(altaCliente.tAltura.getText());
-		direccion.setCalle(altaCliente.tCalle.getText());
-		direccion.setCiudad(altaCliente.tCiudad.getText());
-		direccion.setCodigo(altaCliente.tCodPostal.getText());
-		direccion.setPais(altaCliente.paisDir.getSelectedItem().toString());
+		direccion.setAltura(altaClienteVista.tAltura.getText());
+		direccion.setCalle(altaClienteVista.tCalle.getText());
+		direccion.setCiudad(altaClienteVista.tCiudad.getText());
+		direccion.setCodigo(altaClienteVista.tCodPostal.getText());
+		direccion.setPais(altaClienteVista.paisDir.getSelectedItem().toString());
 
 	//	altaCliente.addListener2(new paisListener());
 		
 		if(direccion.getPais().equals("Argentina")) {
 		
-		direccion.setProvincia(altaCliente.provincias.getSelectedItem().toString());
+		direccion.setProvincia(altaClienteVista.provincias.getSelectedItem().toString());
 		}
 		else {
-			direccion.setProvincia(altaCliente.provincia2.getText());
+			direccion.setProvincia(altaClienteVista.provincia2.getText());
 		}
 		
 		int direccionId = direccionInterfaz.AltaDireccion(direccion);

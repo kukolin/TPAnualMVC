@@ -21,7 +21,7 @@ public class AltaLineaListener implements ActionListener{
 	
 	public AltaLineaListener() throws IOException{
 		linInter = LineasAereasFactory.GetImplementation("MSSQL");
-		altaLinea = Controlador.altaLinea;
+		altaLinea = new AltaLinea();
 		mensaje = new Mensajes();
 
 	}
