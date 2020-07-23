@@ -27,7 +27,7 @@ import edu.usal.vista.Mensajes;
 public class AltaClienteListener implements ActionListener{
 	
 	Mensajes mensaje;
-	AltaClienteVista altaClienteVista;
+	static AltaClienteVista altaClienteVista;
 	ClienteInterfaz cliInter;
 	TelefonoInterfaz telefonoInterfaz;
 	PasaporteInterfaz pasaporteInterfaz;
@@ -40,8 +40,7 @@ public class AltaClienteListener implements ActionListener{
 		pasaporteInterfaz = PasaporteFactory.GetImplementation("MSSQL");
 		direccionInterfaz = DireccionFactory.GetImplementation("MSSQL");
 		pasajeroFrecuenteInterfaz = PasajeroFrecuenteFactory.GetImplementation("MSSQL");
-		altaClienteVista = new AltaClienteVista();
-//		altaCliente = Controlador.altaCliente;
+		altaClienteVista = MenuListener.altaClienteVista;
 		mensaje = new Mensajes();
 
 	}
@@ -97,7 +96,7 @@ public class AltaClienteListener implements ActionListener{
 		direccion.setCodigo(altaClienteVista.tCodPostal.getText());
 		direccion.setPais(altaClienteVista.paisDir.getSelectedItem().toString());
 
-	//	altaCliente.addListener2(new paisListener());
+		altaClienteVista.addListener2(new paisListener());
 		
 		if(direccion.getPais().equals("Argentina")) {
 		

@@ -12,11 +12,7 @@ public class paisListener implements ItemListener{
 	AltaClienteVista altaCliente;
 	
 	public paisListener() {
-		try {
-			altaCliente = new AltaClienteVista();
-		} catch (IOException | SQLException e) {
-			e.printStackTrace();
-		}
+		altaCliente = AltaClienteListener.altaClienteVista;
 	}
 	
 	@Override

@@ -26,7 +26,7 @@ public class Controlador extends JFrame{
 				
 		this.frame = frame;	
 			
-		 this.frame.addActionListeners(new MenuListener());
+		this.frame.addActionListeners(new MenuListener());
 
 	}
 

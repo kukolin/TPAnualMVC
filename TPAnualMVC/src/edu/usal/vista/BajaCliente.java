@@ -3,61 +3,76 @@ package edu.usal.vista;
 import javax.swing.JPanel;
 
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
+
+import edu.usal.controlador.ItemsClienteListener;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import java.awt.Color;
 import java.awt.Font;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.JComboBox;
 
 public class BajaCliente extends JPanel {
-	public JTextField textField;
 	public JButton btnEnviar;
+	public JComboBox comboBox;
+	ItemsClienteListener itemsClienteListener;
 
-	public BajaCliente() {
-		setBackground(new Color(0, 0, 128));
-		
-		textField = new JTextField();
-		textField.setHorizontalAlignment(SwingConstants.CENTER);
-		textField.setColumns(10);
-		
+	public BajaCliente() throws IOException, SQLException {
+		setBackground(Color.BLACK);
+		itemsClienteListener = new ItemsClienteListener();
 		btnEnviar = new JButton("Enviar");
 		btnEnviar.setBackground(new Color(0, 0, 0));
-		btnEnviar.setForeground(new Color(255, 0, 0));
+		btnEnviar.setForeground(Color.ORANGE);
 		btnEnviar.setFont(new Font("Tahoma", Font.BOLD, 14));
 		
 		JLabel lblIngreseElId = new JLabel("Ingrese el ID del cliente a eliminar:");
-		lblIngreseElId.setForeground(new Color(255, 0, 0));
+		lblIngreseElId.setForeground(Color.ORANGE);
 		lblIngreseElId.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblIngreseElId.setHorizontalAlignment(SwingConstants.CENTER);
+		
+		JLabel lblNewLabel = new JLabel("");
+		
+		comboBox = new JComboBox(itemsClienteListener.valores());
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
+			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(153)
-					.addComponent(textField)
-					.addGap(211))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(150)
-					.addComponent(btnEnviar, GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
-					.addGap(211))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(88)
+					.addGap(120)
 					.addComponent(lblIngreseElId, GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
-					.addGap(146))
+					.addGap(114))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(163)
+					.addComponent(btnEnviar, GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
+					.addGap(171))
+				.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
+					.addGap(189)
+					.addComponent(lblNewLabel)
+					.addContainerGap(261, Short.MAX_VALUE))
+				.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
+					.addGap(142)
+					.addComponent(comboBox, 0, 159, Short.MAX_VALUE)
+					.addGap(149))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(74)
-					.addComponent(lblIngreseElId)
-					.addGap(29)
-					.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(47)
-					.addComponent(btnEnviar))
+					.addGap(75)
+					.addComponent(lblIngreseElId, GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)
+					.addGap(28)
+					.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addGap(22)
+					.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, 8, Short.MAX_VALUE)
+					.addGap(28)
+					.addComponent(btnEnviar, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
+					.addGap(70))
 		);
 		setLayout(groupLayout);
 		

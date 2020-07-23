@@ -33,26 +33,15 @@ public class VentasListener implements ActionListener{
 		venInter = VentasFactory.GetImplementation("MSSQL");
 		clienteImple = ClienteFactory.GetImplementation("MSSQL");
 		
-		altaVentasVista = new AltaVentas();
-		mensaje = new Mensajes();
+		altaVentasVista = MenuListener.altaVentas;
 		
-//
-//		try {
-//			for(int i=0;i<clienteImple.ListarClientes().size(); i++) {
-//			altaVentasVista.comboClientes.addItem(new ComboItem(clienteImple.ListarClientes().get(i).getNombreyApellido(), "Value 3"));
-//			
-//			}
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
+		mensaje = new Mensajes();
+
 
 	}
 	
 	@Override
-	public void actionPerformed(ActionEvent e) {			
-	
-	//	JOptionPane.showMessageDialog(null, altaVentasVista.tidcliente.getText(), "Warning", JOptionPane.WARNING_MESSAGE);	
-		
+	public void actionPerformed(ActionEvent e) {					
 			
 			
 			try {
@@ -64,14 +53,16 @@ public class VentasListener implements ActionListener{
 			java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
 
 			venta.setFechaVenta(date);
-							
-			if(altaVentasVista.rdbtnEfectivo.isSelected()) venta.setFormaDePago("Efectivo");
+
+			if(altaVentasVista.rdbtnEfectivo.isSelected()) venta.setFormaDePago("Efectivo");	
 			if(altaVentasVista.rdbtnTarjetaCuotas.isSelected()) venta.setFormaDePago("3 Cuotas");
-			if(altaVentasVista.rdbtnTarjetaCuotas_1.isSelected()) venta.setFormaDePago("12 Cuotas");					
+			if(altaVentasVista.rdbtnTarjetaCuotas_1.isSelected()) venta.setFormaDePago("12 Cuotas");				
 			
-			int ClienteSel = altaVentasVista.comboClientes.getSelectedIndex();
-			
-			venta.setIdCliente(alClientes.get(ClienteSel).getIdCliente());
+			int clienteSel = altaVentasVista.comboClientes.getSelectedIndex();
+//			System.out.println(altaVentasVista.comboClientes.getSelectedItem());
+//			System.out.println(altaVentasVista.comboClientes.getSelectedIndex());
+
+			venta.setIdCliente(alClientes.get(clienteSel).getIdCliente());
 		//	venta.setIdVuelo(Integer.parseInt(altaVentasVista.tidVuelo.getText()));
 			
 			

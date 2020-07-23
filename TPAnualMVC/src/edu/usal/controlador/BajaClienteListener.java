@@ -4,9 +4,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import edu.usal.dao.factory.ClienteFactory;
 import edu.usal.dao.interfaces.ClienteInterfaz;
+import edu.usal.negocio.dominio.Cliente;
 import edu.usal.vista.BajaCliente;
 import edu.usal.vista.Mensajes;
 
@@ -18,7 +20,7 @@ public class BajaClienteListener implements ActionListener{
 	
 	public BajaClienteListener() throws IOException{
 		cliInter = ClienteFactory.GetImplementation("MSSQL");
-		bajaCliente = new BajaCliente();
+		bajaCliente = MenuListener.bajaCliente;
 		mensaje = new Mensajes();
 
 	}
@@ -26,15 +28,27 @@ public class BajaClienteListener implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {			
 		
+		
+		
+		ArrayList<Cliente> alClientes = new ArrayList<Cliente>();
+		
+		try {
+			alClientes = cliInter.ListarClientes();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+			mensaje.Verificar();
+		}
+		
+		int idSelec = alClientes.get(bajaCliente.comboBox.getSelectedIndex()).getIdCliente();
+		
 		try {
 			
-			if(bajaCliente.textField.getText().matches("[0-9]+")) {
 				
-				cliInter.BajaCliente(Integer.parseInt(bajaCliente.textField.getText()));
+				
+				cliInter.BajaCliente(idSelec);
 				
 				mensaje.Realizado();
-			}
-			else mensaje.ErrorNumerico();		
+					
 			
 			
 		} catch (NumberFormatException | SQLException e1) {

@@ -4,6 +4,8 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.swing.JButton;
 import javax.swing.JTextField;
@@ -13,55 +15,97 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.SwingConstants;
 
+import edu.usal.controlador.ItemsLineasAereas;
+
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.JComboBox;
+
 public class BajaLinea extends JPanel {
-	public JTextField textField;
 	private JLabel lblIngreseElId;
 	public JButton btnNewButton;
+	private JLabel lblNewLabel;
+	private JLabel lblNewLabel_1;
+	private JLabel lblNewLabel_2;
+	private JLabel lblNewLabel_3;
+	public JComboBox comboBox;
+	ItemsLineasAereas itemsLineasAereas;
 
 	/**
 	 * Create the panel.
+	 * @throws SQLException 
+	 * @throws IOException 
 	 */
-	public BajaLinea() {
-		setForeground(new Color(255, 0, 0));
-		setBackground(new Color(0, 0, 128));
-		
+	public BajaLinea() throws IOException, SQLException {
+		setForeground(Color.ORANGE);
+		setBackground(Color.BLACK);
+		itemsLineasAereas = new ItemsLineasAereas();
 		lblIngreseElId = new JLabel("Ingrese el id de la Linea Aerea a dar de baja:");
 		lblIngreseElId.setHorizontalAlignment(SwingConstants.CENTER);
-		lblIngreseElId.setForeground(new Color(255, 0, 0));
+		lblIngreseElId.setForeground(Color.ORANGE);
 		lblIngreseElId.setFont(new Font("Tahoma", Font.BOLD, 11));
 		
 		btnNewButton = new JButton("Enviar");
 		btnNewButton.setBackground(new Color(0, 0, 0));
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnNewButton.setForeground(new Color(255, 0, 0));
+		btnNewButton.setForeground(Color.ORANGE);
 		
-		textField = new JTextField();
-		textField.setHorizontalAlignment(SwingConstants.CENTER);
-		textField.setColumns(10);
+		lblNewLabel = new JLabel("");
+		
+		lblNewLabel_1 = new JLabel("");
+		
+		lblNewLabel_2 = new JLabel("");
+		
+		lblNewLabel_3 = new JLabel("");
+		
+		comboBox = new JComboBox(itemsLineasAereas.valores());
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(44)
-					.addComponent(lblIngreseElId, GroupLayout.DEFAULT_SIZE, 364, Short.MAX_VALUE)
+					.addComponent(lblIngreseElId, GroupLayout.DEFAULT_SIZE, 468, Short.MAX_VALUE)
 					.addGap(42))
 				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-					.addGap(157)
-					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
-						.addComponent(textField, Alignment.LEADING)
-						.addComponent(btnNewButton, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-					.addGap(207))
+					.addGap(65)
+					.addComponent(lblNewLabel_2, GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
+					.addGap(116)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE)
+							.addGap(261))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(0)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addGroup(groupLayout.createSequentialGroup()
+									.addComponent(lblNewLabel_3)
+									.addContainerGap())
+								.addGroup(groupLayout.createSequentialGroup()
+									.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE)
+									.addGap(106)
+									.addComponent(lblNewLabel_1, GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
+									.addGap(88))))))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(188)
+					.addComponent(comboBox, 0, 170, Short.MAX_VALUE)
+					.addGap(196))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(89)
-					.addComponent(lblIngreseElId, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addGap(42)
-					.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(38)
-					.addComponent(btnNewButton)
-					.addGap(74))
+					.addComponent(lblIngreseElId, GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
+					.addGap(24)
+					.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
+					.addGap(36)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(btnNewButton)
+						.addComponent(lblNewLabel_1)
+						.addComponent(lblNewLabel_2))
+					.addGap(18)
+					.addComponent(lblNewLabel_3, GroupLayout.PREFERRED_SIZE, 16, Short.MAX_VALUE)
+					.addGap(37))
 		);
 		setLayout(groupLayout);
 

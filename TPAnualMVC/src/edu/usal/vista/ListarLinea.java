@@ -9,9 +9,6 @@ import java.io.IOException;
 import javax.swing.JButton;
 import javax.swing.table.DefaultTableModel;
 
-
-import edu.usal.controlador.AgregarItemsLinea;
-
 import java.awt.Color;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -23,18 +20,14 @@ public class ListarLinea extends JPanel {
 	public JButton btnListar;
 	public DefaultTableModel modelo;
 	public JTable tabla;
-	public AgregarItemsLinea agregarItemsLinea;
 
-	/**
-	 * Create the panel.
-	 * @throws IOException 
-	 */
 	public ListarLinea() throws IOException {
-		agregarItemsLinea = new AgregarItemsLinea();
-		modelo = agregarItemsLinea.items();
-		setBackground(new Color(0, 0, 128));
+
+		modelo = new DefaultTableModel();
+		
+		setBackground(Color.BLACK);
 		btnListar = new JButton("Actualizar");
-		btnListar.setForeground(new Color(255, 0, 0));
+		btnListar.setForeground(Color.ORANGE);
 		btnListar.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnListar.setBackground(new Color(0, 0, 0));
 
@@ -67,7 +60,7 @@ public class ListarLinea extends JPanel {
 				
 				tabla = new JTable (modelo);
 				scrollPane.setViewportView(tabla);
-		setLayout(groupLayout);
+				setLayout(groupLayout);
 
 	}
 	public void addListener(ActionListener al) {

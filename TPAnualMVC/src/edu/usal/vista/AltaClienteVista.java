@@ -22,6 +22,7 @@ import java.awt.Font;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class AltaClienteVista extends JPanel {
+	public JButton btnEnviar;
 	public JTextField tNombre;
 	public JTextField tDni;
 	public JTextField tNumeroPas;
@@ -32,60 +33,91 @@ public class AltaClienteVista extends JPanel {
 	public JTextField tCelular;
 	public JTextField tLaboral;
 	public JTextField tAlianza;
-	public JTextField tFechaEmic;
 	public JTextField tAerolinea;
 	public JTextField tNumeroFrec;
 	public JTextField tCategoriaFrec;
+	private JLabel lblNombre_10;
+	private JLabel lblNombre_11;
+	private JLabel lblNombre_12;
+	private JLabel lblNombre_13;
+	private JLabel lblNombre_14;
+	private JLabel lblNombre_15;
+	private JLabel lblNombre_16;
+	private JLabel lblNombre_17;
+	private JLabel lblProvincia;
+	private JLabel lblOtro;
+	private JLabel lblCodPostal;
+	public JTextField tAutoridad;
+	public JTextField tFechaEmic;
 	public JTextField tFechaVen;
 	public JTextField tCalle;
 	public JTextField tAltura;
 	public JTextField tCiudad;
+	public JTextField provincia2;
 	public JTextField tCodPostal;
-	public JTextField tAutoridad;
-	public JButton btnEnviar;
 	public JComboBox paisEmic;
 	public JComboBox paisDir;
 	public JComboBox provincias;
-	public JTextField provincia2;
 
 	public AltaClienteVista() throws IOException, SQLException {
-		setBackground(new Color(0, 0, 128));
+		setBackground(Color.BLACK);
+		
+		btnEnviar = new JButton("Enviar");
+		btnEnviar.setBackground(Color.BLACK);
+		btnEnviar.setForeground(Color.ORANGE);
+		btnEnviar.setFont(new Font("Tahoma", Font.BOLD, 14));
 		
 		JLabel lblNombre = new JLabel("Nombre: ");
-		lblNombre.setForeground(new Color(255, 0, 0));
+		lblNombre.setForeground(Color.ORANGE);
 		lblNombre.setFont(new Font("Tahoma", Font.BOLD, 11));
 		
 		JLabel lblDni = new JLabel("DNI:");
+		lblDni.setForeground(Color.ORANGE);
 		lblDni.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblDni.setForeground(Color.RED);
 		
-		JLabel lblPasaporte = new JLabel("Numero Pasaporte:");
-		lblPasaporte.setForeground(Color.RED);
-		lblPasaporte.setFont(new Font("Tahoma", Font.BOLD, 11));
+		JLabel lblNumeroPasaporte = new JLabel("Numero Pasaporte:");
+		lblNumeroPasaporte.setForeground(Color.ORANGE);
+		lblNumeroPasaporte.setFont(new Font("Tahoma", Font.BOLD, 11));
 		
-		JLabel lblCuitcuil = new JLabel("CuitCuil");
-		lblCuitcuil.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblCuitcuil.setForeground(Color.RED);
+		JLabel lblNombre_1 = new JLabel("Cuit/Cuil:");
+		lblNombre_1.setForeground(Color.ORANGE);
+		lblNombre_1.setFont(new Font("Tahoma", Font.BOLD, 11));
 		
-		JLabel lblFechaNacimiento = new JLabel("Fecha Nacimiento");
-		lblFechaNacimiento.setForeground(Color.RED);
-		lblFechaNacimiento.setFont(new Font("Tahoma", Font.BOLD, 11));
+		JLabel lblNombre_2 = new JLabel("Fecha Nacimiento: ");
+		lblNombre_2.setForeground(Color.ORANGE);
+		lblNombre_2.setFont(new Font("Tahoma", Font.BOLD, 11));
 		
-		JLabel lblEmail = new JLabel("Email");
-		lblEmail.setForeground(Color.RED);
-		lblEmail.setFont(new Font("Tahoma", Font.BOLD, 11));
+		JLabel lblNombre_3 = new JLabel("Email: ");
+		lblNombre_3.setForeground(Color.ORANGE);
+		lblNombre_3.setFont(new Font("Tahoma", Font.BOLD, 11));
 		
-		JLabel lblTelefono = new JLabel("Telefono personal:");
-		lblTelefono.setForeground(Color.RED);
-		lblTelefono.setFont(new Font("Tahoma", Font.BOLD, 11));
+		JLabel lblNombre_4 = new JLabel("Telefono Personal");
+		lblNombre_4.setForeground(Color.ORANGE);
+		lblNombre_4.setFont(new Font("Tahoma", Font.BOLD, 11));
 		
-		JLabel lblPasajeroFrecuente = new JLabel("Alianza Pasajero Frecuente:");
-		lblPasajeroFrecuente.setForeground(Color.RED);
-		lblPasajeroFrecuente.setFont(new Font("Tahoma", Font.BOLD, 11));
+		JLabel lblNombre_5 = new JLabel("Telefono Celular");
+		lblNombre_5.setForeground(Color.ORANGE);
+		lblNombre_5.setFont(new Font("Tahoma", Font.BOLD, 11));
 		
-		JLabel lblDireccion = new JLabel("Calle");
-		lblDireccion.setForeground(Color.RED);
-		lblDireccion.setFont(new Font("Tahoma", Font.BOLD, 11));
+		JLabel lblNombre_6 = new JLabel("Telefono Laboral");
+		lblNombre_6.setForeground(Color.ORANGE);
+		lblNombre_6.setFont(new Font("Tahoma", Font.BOLD, 11));
+		
+		JLabel lblNombre_7 = new JLabel("Alianza Pasajero Frecuente");
+		lblNombre_7.setForeground(Color.ORANGE);
+		lblNombre_7.setFont(new Font("Tahoma", Font.BOLD, 11));
+		
+		JLabel lblNombre_8 = new JLabel("Aerolinea:");
+		lblNombre_8.setForeground(Color.ORANGE);
+		lblNombre_8.setFont(new Font("Tahoma", Font.BOLD, 11));
+		
+		JLabel lblNombre_9 = new JLabel("Numero P. Frecuente");
+		lblNombre_9.setForeground(Color.ORANGE);
+		lblNombre_9.setFont(new Font("Tahoma", Font.BOLD, 11));
+		
+		JLabel lblCategoriaPFrecuente = new JLabel("Categoria P. Frecuente");
+		lblCategoriaPFrecuente.setForeground(Color.ORANGE);
+		lblCategoriaPFrecuente.setFont(new Font("Tahoma", Font.BOLD, 11));
 		
 		tNombre = new JTextField();
 		tNombre.setColumns(10);
@@ -114,47 +146,8 @@ public class AltaClienteVista extends JPanel {
 		tLaboral = new JTextField();
 		tLaboral.setColumns(10);
 		
-		JLabel lblPaisDeEmision = new JLabel("Pais de Emision");
-		lblPaisDeEmision.setForeground(Color.RED);
-		lblPaisDeEmision.setFont(new Font("Tahoma", Font.BOLD, 11));
-		
-		JLabel lblAutoridad = new JLabel("Autoridad:");
-		lblAutoridad.setForeground(Color.RED);
-		lblAutoridad.setFont(new Font("Tahoma", Font.BOLD, 11));
-		
-		JLabel lblFechaDeEmision = new JLabel("Fecha de Emision");
-		lblFechaDeEmision.setForeground(Color.RED);
-		lblFechaDeEmision.setFont(new Font("Tahoma", Font.BOLD, 11));
-		
-		JLabel lblVencimiento = new JLabel("Vencimiento:");
-		lblVencimiento.setForeground(Color.RED);
-		lblVencimiento.setFont(new Font("Tahoma", Font.BOLD, 11));
-		
-		JLabel lblTelefonoCelular = new JLabel("Telefono Celular:");
-		lblTelefonoCelular.setForeground(Color.RED);
-		lblTelefonoCelular.setFont(new Font("Tahoma", Font.BOLD, 11));
-		
-		JLabel lblTelefonoLaboral = new JLabel("Telefono Laboral:");
-		lblTelefonoLaboral.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblTelefonoLaboral.setForeground(Color.RED);
-		
 		tAlianza = new JTextField();
 		tAlianza.setColumns(10);
-		
-		tFechaEmic = new JTextField();
-		tFechaEmic.setColumns(10);
-		
-		JLabel lblAerolinea = new JLabel("Aerolinea");
-		lblAerolinea.setForeground(Color.RED);
-		lblAerolinea.setFont(new Font("Tahoma", Font.BOLD, 11));
-		
-		JLabel lblNumeroPFrecuente = new JLabel("Numero P. Frecuente");
-		lblNumeroPFrecuente.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblNumeroPFrecuente.setForeground(Color.RED);
-		
-		JLabel lblCategoriaPFrecuente = new JLabel("Categoria P. Frecuente");
-		lblCategoriaPFrecuente.setForeground(Color.RED);
-		lblCategoriaPFrecuente.setFont(new Font("Tahoma", Font.BOLD, 11));
 		
 		tAerolinea = new JTextField();
 		tAerolinea.setColumns(10);
@@ -165,6 +158,56 @@ public class AltaClienteVista extends JPanel {
 		tCategoriaFrec = new JTextField();
 		tCategoriaFrec.setColumns(10);
 		
+		lblNombre_10 = new JLabel("Pais Emision:");
+		lblNombre_10.setForeground(Color.ORANGE);
+		lblNombre_10.setFont(new Font("Tahoma", Font.BOLD, 11));
+		
+		lblNombre_11 = new JLabel("Autoridad:");
+		lblNombre_11.setForeground(Color.ORANGE);
+		lblNombre_11.setFont(new Font("Tahoma", Font.BOLD, 11));
+		
+		lblNombre_12 = new JLabel("Fecha Emision");
+		lblNombre_12.setForeground(Color.ORANGE);
+		lblNombre_12.setFont(new Font("Tahoma", Font.BOLD, 11));
+		
+		lblNombre_13 = new JLabel("Vencimiento:");
+		lblNombre_13.setForeground(Color.ORANGE);
+		lblNombre_13.setFont(new Font("Tahoma", Font.BOLD, 11));
+		
+		lblNombre_14 = new JLabel("Calle:");
+		lblNombre_14.setForeground(Color.ORANGE);
+		lblNombre_14.setFont(new Font("Tahoma", Font.BOLD, 11));
+		
+		lblNombre_15 = new JLabel("Altura:");
+		lblNombre_15.setForeground(Color.ORANGE);
+		lblNombre_15.setFont(new Font("Tahoma", Font.BOLD, 11));
+		
+		lblNombre_16 = new JLabel("Ciudad:");
+		lblNombre_16.setForeground(Color.ORANGE);
+		lblNombre_16.setFont(new Font("Tahoma", Font.BOLD, 11));
+		
+		lblNombre_17 = new JLabel("Pais:");
+		lblNombre_17.setForeground(Color.ORANGE);
+		lblNombre_17.setFont(new Font("Tahoma", Font.BOLD, 11));
+		
+		lblProvincia = new JLabel("Provincia:");
+		lblProvincia.setForeground(Color.ORANGE);
+		lblProvincia.setFont(new Font("Tahoma", Font.BOLD, 11));
+		
+		lblOtro = new JLabel("Otro:");
+		lblOtro.setForeground(Color.ORANGE);
+		lblOtro.setFont(new Font("Tahoma", Font.BOLD, 11));
+		
+		lblCodPostal = new JLabel("Cod. Postal:");
+		lblCodPostal.setForeground(Color.ORANGE);
+		lblCodPostal.setFont(new Font("Tahoma", Font.BOLD, 11));
+		
+		tAutoridad = new JTextField();
+		tAutoridad.setColumns(10);
+		
+		tFechaEmic = new JTextField();
+		tFechaEmic.setColumns(10);
+		
 		tFechaVen = new JTextField();
 		tFechaVen.setColumns(10);
 		
@@ -174,40 +217,14 @@ public class AltaClienteVista extends JPanel {
 		tAltura = new JTextField();
 		tAltura.setColumns(10);
 		
-		JLabel lblAltura = new JLabel("Altura");
-		lblAltura.setForeground(Color.RED);
-		lblAltura.setFont(new Font("Tahoma", Font.BOLD, 11));
-		
-		JLabel lblCiudad = new JLabel("Ciudad");
-		lblCiudad.setForeground(Color.RED);
-		lblCiudad.setFont(new Font("Tahoma", Font.BOLD, 11));
-		
-		JLabel lblProvincia_1 = new JLabel("Provincia");
-		lblProvincia_1.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblProvincia_1.setForeground(Color.RED);
-		
-		JLabel lblPais = new JLabel("Pais");
-		lblPais.setForeground(Color.RED);
-		lblPais.setFont(new Font("Tahoma", Font.BOLD, 11));
-		
-		JLabel lblCodPostal = new JLabel("Cod. Postal");
-		lblCodPostal.setForeground(Color.RED);
-		lblCodPostal.setFont(new Font("Tahoma", Font.BOLD, 11));
-		
-		btnEnviar = new JButton("Enviar");
-		btnEnviar.setBackground(Color.BLACK);
-		btnEnviar.setForeground(Color.RED);
-		btnEnviar.setFont(new Font("Tahoma", Font.BOLD, 14));
-		
 		tCiudad = new JTextField();
 		tCiudad.setColumns(10);
 		
+		provincia2 = new JTextField();
+		provincia2.setColumns(10);
+		
 		tCodPostal = new JTextField();
 		tCodPostal.setColumns(10);
-		
-		tAutoridad = new JTextField();
-		tAutoridad.setColumns(10);
-		
 		
 		paisEmic = new JComboBox(JCombobox());
 		
@@ -215,309 +232,225 @@ public class AltaClienteVista extends JPanel {
 		
 		provincias = new JComboBox(JCombobox2());
 		provincias.setEnabled(false);
-		
-		provincia2 = new JTextField();
-		provincia2.setColumns(10);
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(10)
-					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+					.addContainerGap()
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblNombre, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblDni, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblNumeroPasaporte, GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblNombre_1, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblNombre_2, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblNombre_3, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblNombre_4, GroupLayout.PREFERRED_SIZE, 147, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblNombre_5, GroupLayout.PREFERRED_SIZE, 134, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblNombre_6, GroupLayout.PREFERRED_SIZE, 110, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblNombre_7, GroupLayout.PREFERRED_SIZE, 167, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblNombre_8, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblNombre_9)
+						.addComponent(lblCategoriaPFrecuente, GroupLayout.PREFERRED_SIZE, 138, GroupLayout.PREFERRED_SIZE))
+					.addGap(27)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(lblPasaporte, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addGap(31)
-							.addComponent(tNumeroPas, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addGap(10)
-							.addComponent(lblFechaDeEmision, GroupLayout.PREFERRED_SIZE, 97, GroupLayout.PREFERRED_SIZE)
-							.addGap(21)
-							.addComponent(tFechaEmic, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(lblCuitcuil, GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
-							.addGap(46)
-							.addComponent(tCuit, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addGap(10)
-							.addComponent(lblVencimiento, GroupLayout.PREFERRED_SIZE, 114, GroupLayout.PREFERRED_SIZE)
-							.addGap(4)
-							.addComponent(tFechaVen, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(128)
-									.addComponent(tFechaNac, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-								.addGroup(groupLayout.createSequentialGroup()
-									.addComponent(lblFechaNacimiento, GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
-									.addGap(73)))
-							.addGap(10)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(118)
-									.addComponent(tCalle, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-								.addComponent(lblDireccion, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(128)
-									.addComponent(tEmail, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-								.addGroup(groupLayout.createSequentialGroup()
-									.addComponent(lblEmail, GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
-									.addGap(84)))
-							.addGap(10)
-							.addComponent(lblAltura, GroupLayout.PREFERRED_SIZE, 97, GroupLayout.PREFERRED_SIZE)
-							.addGap(21)
-							.addComponent(tAltura, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(lblCategoriaPFrecuente, GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
-							.addGap(9)
-							.addComponent(tCategoriaFrec, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addGap(214))
+							.addComponent(tCategoriaFrec, GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
+							.addGap(114))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 								.addGroup(groupLayout.createSequentialGroup()
-									.addComponent(lblDni, GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
-									.addGap(55)
-									.addComponent(tDni, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-									.addGap(10)
-									.addComponent(lblAutoridad, GroupLayout.PREFERRED_SIZE, 97, GroupLayout.PREFERRED_SIZE))
+									.addComponent(tAlianza)
+									.addGap(18)
+									.addComponent(lblOtro, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE))
 								.addGroup(groupLayout.createSequentialGroup()
-									.addComponent(lblNombre, GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
-									.addGap(46)
-									.addComponent(tNombre, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-									.addGap(10)
-									.addComponent(lblPaisDeEmision, GroupLayout.PREFERRED_SIZE, 97, GroupLayout.PREFERRED_SIZE)))
-							.addGap(21)
-							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
-								.addComponent(paisEmic, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(tAutoridad)))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+									.addComponent(tLaboral)
+									.addGap(18)
+									.addComponent(lblProvincia, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE))
 								.addGroup(groupLayout.createSequentialGroup()
-									.addComponent(lblAerolinea, GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
-									.addGap(46)
-									.addComponent(tAerolinea, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-									.addGap(10)
-									.addComponent(lblCodPostal, GroupLayout.PREFERRED_SIZE, 82, GroupLayout.PREFERRED_SIZE)
-									.addGap(36))
+									.addComponent(tCelular)
+									.addGap(18)
+									.addComponent(lblNombre_17, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE))
 								.addGroup(groupLayout.createSequentialGroup()
+									.addComponent(tPersonal)
+									.addGap(18)
+									.addComponent(lblNombre_16, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE))
+								.addGroup(groupLayout.createSequentialGroup()
+									.addComponent(tEmail)
+									.addGap(18)
+									.addComponent(lblNombre_15, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE))
+								.addGroup(groupLayout.createSequentialGroup()
+									.addComponent(tFechaNac)
+									.addGap(18)
+									.addComponent(lblNombre_14, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE))
+								.addGroup(groupLayout.createSequentialGroup()
+									.addComponent(tCuit)
+									.addGap(18)
+									.addComponent(lblNombre_13, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE))
+								.addGroup(groupLayout.createSequentialGroup()
+									.addComponent(tNumeroPas)
+									.addGap(18)
+									.addComponent(lblNombre_12, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE))
+								.addGroup(groupLayout.createSequentialGroup()
+									.addComponent(tDni)
+									.addGap(18)
+									.addComponent(lblNombre_11, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE))
+								.addGroup(groupLayout.createSequentialGroup()
+									.addComponent(tNombre)
+									.addGap(18)
+									.addComponent(lblNombre_10, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE))
+								.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
 									.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-										.addGroup(groupLayout.createSequentialGroup()
-											.addGap(128)
-											.addComponent(tNumeroFrec, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-										.addGroup(groupLayout.createSequentialGroup()
-											.addComponent(lblNumeroPFrecuente, GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
-											.addGap(84)))
-									.addGap(128))
+										.addComponent(tNumeroFrec, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
+										.addComponent(tAerolinea))
+									.addGap(18)
+									.addComponent(lblCodPostal, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)))
+							.addGap(10)))
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 								.addGroup(groupLayout.createSequentialGroup()
-									.addComponent(lblTelefono, GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
-									.addGap(31)
-									.addComponent(tPersonal, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-									.addGap(10)
-									.addComponent(lblCiudad, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE)
-									.addGap(72))
+									.addGap(18)
+									.addComponent(paisDir, 0, 104, Short.MAX_VALUE))
 								.addGroup(groupLayout.createSequentialGroup()
-									.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-										.addGroup(groupLayout.createSequentialGroup()
-											.addComponent(lblPasajeroFrecuente, GroupLayout.PREFERRED_SIZE, 141, Short.MAX_VALUE)
-											.addGap(84))
-										.addGroup(groupLayout.createSequentialGroup()
-											.addGap(128)
-											.addComponent(tAlianza, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-									.addGap(128))
+									.addGap(11)
+									.addComponent(btnEnviar, GroupLayout.PREFERRED_SIZE, 102, GroupLayout.PREFERRED_SIZE))
 								.addGroup(groupLayout.createSequentialGroup()
-									.addComponent(lblTelefonoLaboral, GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
-									.addGap(31)
-									.addComponent(tLaboral, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-									.addGap(10)
-									.addComponent(lblProvincia_1, GroupLayout.PREFERRED_SIZE, 97, GroupLayout.PREFERRED_SIZE)
-									.addGap(21))
+									.addGap(18)
+									.addComponent(tFechaEmic, GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE))
 								.addGroup(groupLayout.createSequentialGroup()
-									.addComponent(lblTelefonoCelular, GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
-									.addGap(9)
-									.addComponent(tCelular, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-									.addGap(10)
-									.addComponent(lblPais, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
-									.addGap(41)))
-							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
-								.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
-									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
-										.addComponent(provincias, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)
-										.addComponent(paisDir, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)
-										.addComponent(provincia2, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE))
-									.addComponent(tCiudad, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-								.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
-									.addComponent(tCodPostal)
-									.addComponent(btnEnviar, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-					.addGap(72))
+									.addGap(18)
+									.addComponent(tFechaVen, GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE))
+								.addGroup(groupLayout.createSequentialGroup()
+									.addGap(18)
+									.addComponent(tCalle, GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE))
+								.addGroup(groupLayout.createSequentialGroup()
+									.addGap(18)
+									.addComponent(tAltura, GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE))
+								.addGroup(groupLayout.createSequentialGroup()
+									.addGap(18)
+									.addComponent(tCiudad, GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE))
+								.addGroup(groupLayout.createSequentialGroup()
+									.addGap(18)
+									.addComponent(provincia2, GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE))
+								.addGroup(groupLayout.createSequentialGroup()
+									.addGap(18)
+									.addComponent(tCodPostal, GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE))
+								.addGroup(groupLayout.createSequentialGroup()
+									.addGap(18)
+									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+										.addComponent(paisEmic, 0, 102, Short.MAX_VALUE)
+										.addComponent(tAutoridad, GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE))))
+							.addGap(60))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(18)
+							.addComponent(provincias, 0, 39, Short.MAX_VALUE)
+							.addGap(60))))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(7)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-							.addGroup(groupLayout.createSequentialGroup()
-								.addGap(4)
-								.addComponent(lblNombre, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addGap(4))
-							.addGroup(groupLayout.createSequentialGroup()
-								.addGap(1)
-								.addComponent(tNombre, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-							.addGroup(groupLayout.createSequentialGroup()
-								.addGap(4)
-								.addComponent(lblPaisDeEmision)))
+					.addContainerGap()
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(paisEmic, GroupLayout.PREFERRED_SIZE, 22, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)))
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+							.addGap(8)
+							.addComponent(lblNombre, GroupLayout.DEFAULT_SIZE, 14, Short.MAX_VALUE))
+						.addComponent(tNombre, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblNombre_10, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE)
+						.addComponent(paisEmic, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(7)
-							.addComponent(lblDni, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addGap(3))
+							.addGap(8)
+							.addComponent(lblDni, GroupLayout.DEFAULT_SIZE, 14, Short.MAX_VALUE))
+						.addComponent(tDni, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblNombre_11, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE)
+						.addComponent(tAutoridad, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(4)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(tAutoridad, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(tDni, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(3)
-									.addComponent(lblAutoridad)))))
-					.addGap(5)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(3)
-							.addComponent(lblPasaporte, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addGap(3))
+							.addGap(8)
+							.addComponent(lblNumeroPasaporte, GroupLayout.DEFAULT_SIZE, 14, Short.MAX_VALUE))
 						.addComponent(tNumeroPas, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(3)
-							.addComponent(lblFechaDeEmision))
+						.addComponent(lblNombre_12, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE)
 						.addComponent(tFechaEmic, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(5)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(3)
-							.addComponent(lblCuitcuil, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addGap(3))
+							.addGap(8)
+							.addComponent(lblNombre_1, GroupLayout.DEFAULT_SIZE, 14, Short.MAX_VALUE))
 						.addComponent(tCuit, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(3)
-							.addComponent(lblVencimiento))
+						.addComponent(lblNombre_13, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE)
 						.addComponent(tFechaVen, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(5)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(8)
+							.addComponent(lblNombre_2, GroupLayout.DEFAULT_SIZE, 14, Short.MAX_VALUE))
 						.addComponent(tFechaNac, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblNombre_14, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE)
+						.addComponent(tCalle, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(3)
-							.addComponent(lblFechaNacimiento, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addGap(3))
-						.addComponent(tCalle, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(3)
-							.addComponent(lblDireccion)))
-					.addGap(5)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+							.addGap(8)
+							.addComponent(lblNombre_3, GroupLayout.DEFAULT_SIZE, 14, Short.MAX_VALUE))
 						.addComponent(tEmail, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(3)
-							.addComponent(lblEmail, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addGap(3))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(3)
-							.addComponent(lblAltura))
+						.addComponent(lblNombre_15, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE)
 						.addComponent(tAltura, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(5)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(3)
-							.addComponent(lblTelefono, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addGap(3))
+							.addGap(8)
+							.addComponent(lblNombre_4, GroupLayout.DEFAULT_SIZE, 14, Short.MAX_VALUE))
 						.addComponent(tPersonal, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(3)
-							.addComponent(lblCiudad))
+						.addComponent(lblNombre_16, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE)
 						.addComponent(tCiudad, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-							.addGroup(groupLayout.createSequentialGroup()
-								.addGap(4)
-								.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-									.addGroup(groupLayout.createSequentialGroup()
-										.addGap(4)
-										.addComponent(lblTelefonoCelular, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-										.addGap(4))
-									.addGroup(groupLayout.createSequentialGroup()
-										.addGap(1)
-										.addComponent(tCelular, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-								.addGap(6))
-							.addGroup(groupLayout.createSequentialGroup()
-								.addGap(8)
-								.addComponent(lblPais)
-								.addPreferredGap(ComponentPlacement.RELATED)))
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(4)
-							.addComponent(paisDir, GroupLayout.PREFERRED_SIZE, 22, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)))
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+							.addGap(8)
+							.addComponent(lblNombre_5, GroupLayout.DEFAULT_SIZE, 14, Short.MAX_VALUE))
+						.addComponent(tCelular, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblNombre_17, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE)
+						.addComponent(paisDir, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(4)
-									.addComponent(lblTelefonoLaboral, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-									.addGap(4))
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(1)
-									.addComponent(tLaboral, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(4)
-									.addComponent(lblProvincia_1)))
-							.addGap(5))
+							.addGap(8)
+							.addComponent(lblNombre_6, GroupLayout.DEFAULT_SIZE, 14, Short.MAX_VALUE))
+						.addComponent(tLaboral, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblProvincia, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE)
+						.addComponent(provincias, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(provincias, GroupLayout.PREFERRED_SIZE, 22, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)))
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+							.addGap(8)
+							.addComponent(lblNombre_7, GroupLayout.DEFAULT_SIZE, 14, Short.MAX_VALUE))
+						.addComponent(tAlianza, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblOtro, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE)
+						.addComponent(provincia2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(13)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(3)
-									.addComponent(lblPasajeroFrecuente, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-									.addGap(3))
-								.addComponent(tAlianza, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-							.addGap(5))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(provincia2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)))
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(3)
-							.addComponent(lblAerolinea, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addGap(3))
+							.addGap(8)
+							.addComponent(lblNombre_8, GroupLayout.DEFAULT_SIZE, 14, Short.MAX_VALUE))
 						.addComponent(tAerolinea, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(3)
-							.addComponent(lblCodPostal))
+						.addComponent(lblCodPostal, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE)
 						.addComponent(tCodPostal, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(5)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(tNumeroFrec, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(3)
-									.addComponent(lblNumeroPFrecuente, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-									.addGap(3)))
-							.addGap(5)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(3)
-									.addComponent(lblCategoriaPFrecuente, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-									.addGap(3))
-								.addComponent(tCategoriaFrec, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-							.addGap(20))
+							.addGap(8)
+							.addComponent(lblNombre_9, GroupLayout.DEFAULT_SIZE, 14, Short.MAX_VALUE))
+						.addComponent(tNumeroFrec, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(4)
-							.addComponent(btnEnviar)
-							.addContainerGap())))
+							.addGap(11)
+							.addComponent(lblCategoriaPFrecuente, GroupLayout.DEFAULT_SIZE, 14, Short.MAX_VALUE))
+						.addComponent(tCategoriaFrec, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnEnviar))
+					.addGap(7))
 		);
 		setLayout(groupLayout);
 		

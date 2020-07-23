@@ -4,9 +4,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import edu.usal.dao.factory.LineasAereasFactory;
 import edu.usal.dao.interfaces.LineasAereasInterfaz;
+import edu.usal.negocio.dominio.LineasAereas;
 import edu.usal.vista.BajaLinea;
 import edu.usal.vista.Mensajes;
 
@@ -18,7 +20,7 @@ public class BajaLineaListener implements ActionListener{
 	
 	public BajaLineaListener() throws IOException{
 		linInter = LineasAereasFactory.GetImplementation("MSSQL");
-		bajaLinea = new BajaLinea();
+		bajaLinea = MenuListener.bajaLinea;
 		mensaje = new Mensajes();
 
 	}
@@ -26,15 +28,18 @@ public class BajaLineaListener implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent e) {
 
+			ArrayList<LineasAereas> alLineasAereas = new ArrayList<LineasAereas>();
+			
+			
 			try {
-				
-				if(bajaLinea.textField.getText().matches("[0-9]+")) {
+					alLineasAereas = linInter.ListarLineas();
 					
-					linInter.BajaLineas(Integer.parseInt(bajaLinea.textField.getText()));
+					int idSelec = alLineasAereas.get(bajaLinea.comboBox.getSelectedIndex()).getIdLinea();
+
+					linInter.BajaLineas(idSelec);
 					
 					mensaje.Realizado();
-				}
-				else mensaje.ErrorNumerico();		
+						
 				
 				
 			} catch (NumberFormatException | SQLException e1) {

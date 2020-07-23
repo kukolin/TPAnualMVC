@@ -40,39 +40,39 @@ public class AltaVentas extends JPanel {
 	 * @throws SQLException 
 	 */
 	public AltaVentas() throws IOException, SQLException {
-		setBackground(new Color(0, 0, 128));
+		setBackground(Color.BLACK);
 		itemsClienteListener  = new ItemsClienteListener();
 		itemsVuelos = new ItemsVuelos();
 		
 		
 		JLabel lblIdvuelo = new JLabel("Vuelo:");
-		lblIdvuelo.setForeground(new Color(255, 0, 0));
+		lblIdvuelo.setForeground(Color.ORANGE);
 		lblIdvuelo.setFont(new Font("Tahoma", Font.BOLD, 11));
 		
 		JLabel lblIdcliente = new JLabel("Cliente:");
-		lblIdcliente.setForeground(new Color(255, 0, 0));
+		lblIdcliente.setForeground(Color.ORANGE);
 		lblIdcliente.setFont(new Font("Tahoma", Font.BOLD, 11));
 		
 		JLabel lblFormaDePago = new JLabel("Forma de pago:");
-		lblFormaDePago.setForeground(new Color(255, 0, 0));
+		lblFormaDePago.setForeground(Color.ORANGE);
 		lblFormaDePago.setFont(new Font("Tahoma", Font.BOLD, 11));
 		
 		grupo = new ButtonGroup();
 		
 		rdbtnEfectivo = new JRadioButton("Efectivo", null, true);
-		rdbtnEfectivo.setForeground(new Color(255, 0, 0));
+		rdbtnEfectivo.setForeground(Color.ORANGE);
 		rdbtnEfectivo.setFont(new Font("Tahoma", Font.BOLD, 11));
-		rdbtnEfectivo.setBackground(new Color(0, 0, 128));
+		rdbtnEfectivo.setBackground(Color.BLACK);
 		
 		rdbtnTarjetaCuotas = new JRadioButton("Tarjeta 3 cuotas s/i");
-		rdbtnTarjetaCuotas.setForeground(new Color(255, 0, 0));
+		rdbtnTarjetaCuotas.setForeground(Color.ORANGE);
 		rdbtnTarjetaCuotas.setFont(new Font("Tahoma", Font.BOLD, 11));
-		rdbtnTarjetaCuotas.setBackground(new Color(0, 0, 128));
+		rdbtnTarjetaCuotas.setBackground(Color.BLACK);
 		
 		rdbtnTarjetaCuotas_1 = new JRadioButton("Tarjeta 12 Cuotas");
 		rdbtnTarjetaCuotas_1.setFont(new Font("Tahoma", Font.BOLD, 11));
-		rdbtnTarjetaCuotas_1.setForeground(new Color(255, 0, 0));
-		rdbtnTarjetaCuotas_1.setBackground(new Color(0, 0, 128));
+		rdbtnTarjetaCuotas_1.setForeground(Color.ORANGE);
+		rdbtnTarjetaCuotas_1.setBackground(Color.BLACK);
 		
 		grupo.add(rdbtnEfectivo);
 		grupo.add(rdbtnTarjetaCuotas);
@@ -80,7 +80,7 @@ public class AltaVentas extends JPanel {
 		
 		btnEnviar = new JButton("Enviar");
 		btnEnviar.setBackground(new Color(0, 0, 0));
-		btnEnviar.setForeground(new Color(255, 0, 0));
+		btnEnviar.setForeground(Color.ORANGE);
 		btnEnviar.setFont(new Font("Tahoma", Font.BOLD, 11));
 		
 		comboClientes = new JComboBox(itemsClienteListener.valores());

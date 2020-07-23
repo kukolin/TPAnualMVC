@@ -21,7 +21,7 @@ public class AltaLineaListener implements ActionListener{
 	
 	public AltaLineaListener() throws IOException{
 		linInter = LineasAereasFactory.GetImplementation("MSSQL");
-		altaLinea = new AltaLinea();
+		altaLinea = MenuListener.altaLinea;
 		mensaje = new Mensajes();
 
 	}
@@ -31,7 +31,7 @@ public class AltaLineaListener implements ActionListener{
 		
 		try {
 
-			LineasAereas lineas = new LineasAereas(null, null, 0);
+			LineasAereas lineas = new LineasAereas(0, null, null, 0);
 			
 			lineas.setNombre(altaLinea.textField.getText());
 			lineas.setAlianza(altaLinea.textField_1.getText());

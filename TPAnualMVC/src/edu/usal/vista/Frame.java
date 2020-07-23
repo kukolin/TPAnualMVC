@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import edu.usal.controlador.MenuListener;
+import edu.usal.controlador.VentasListener;
 
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -42,8 +43,11 @@ public class Frame extends JFrame {
 	public JMenuItem mntmListarClientes;
 	public JMenuItem mntmAcercaDe;
 	public JMenuItem mntmSalir;
-	private JPanel panel;
-	private JLabel lblSeleccioneUnaOpcin;
+	public JPanel panel;
+	public JLabel lblSeleccioneUnaOpcin;
+	public JMenuItem mntmModificarClientes;
+	public JMenuItem mntmModificarVuelos;
+	public JMenuItem mntmModificarLineas;
 
 	/**
 	 * Launch the application.
@@ -59,7 +63,7 @@ public class Frame extends JFrame {
 		
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 549, 430);
+		setBounds(100, 100, 756, 588);
 		setLocationRelativeTo(null);
 
 		JMenuBar menuBar = new JMenuBar();
@@ -86,6 +90,9 @@ public class Frame extends JFrame {
 		mntmListarClientes = new JMenuItem("Listar Clientes");
 		mnNewMenu_1.add(mntmListarClientes);
 		
+		mntmModificarClientes = new JMenuItem("Modificar Clientes");
+		mnNewMenu_1.add(mntmModificarClientes);
+		
 		mnLineasAereas = new JMenu("Lineas Aereas");
 		menuBar.add(mnLineasAereas);
 		
@@ -97,6 +104,9 @@ public class Frame extends JFrame {
 		
 		mntmListarLineas = new JMenuItem("Listar Lineas");
 		mnLineasAereas.add(mntmListarLineas);
+		
+		mntmModificarLineas = new JMenuItem("Modificar Lineas");
+		mnLineasAereas.add(mntmModificarLineas);
 		
 		mnVuelos = new JMenu("Vuelos");
 		menuBar.add(mnVuelos);
@@ -110,10 +120,13 @@ public class Frame extends JFrame {
 		mntmListarVuelos = new JMenuItem("Listar Vuelos");
 		mnVuelos.add(mntmListarVuelos);
 		
+		mntmModificarVuelos = new JMenuItem("Modificar Vuelos");
+		mnVuelos.add(mntmModificarVuelos);
+		
 		mnVentas = new JMenu("Ventas");
 		menuBar.add(mnVentas);
 		
-		mntmVentas = new JMenuItem("Ventas");
+		mntmVentas = new JMenuItem("Alta Ventas");
 		mnVentas.add(mntmVentas);
 		
 		contentPane = new JPanel();
@@ -178,7 +191,12 @@ public class Frame extends JFrame {
 		mntmListarClientes.addActionListener(menuListener);
 		mntmListarLineas.addActionListener(menuListener);
 		mntmVentas.addActionListener(menuListener);
-		
+		mntmAltaDeVuelos.addActionListener(menuListener);
+		mntmListarVuelos.addActionListener(menuListener);
+		mntmModificarClientes.addActionListener(menuListener);
+		mntmBajaDeVuelos.addActionListener(menuListener);
+		mntmModificarVuelos.addActionListener(menuListener);
+		mntmModificarLineas.addActionListener(menuListener);
 		
 	}
 }

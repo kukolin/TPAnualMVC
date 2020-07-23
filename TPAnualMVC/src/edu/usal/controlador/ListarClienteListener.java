@@ -6,8 +6,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import javax.swing.DefaultListModel;
-
 import edu.usal.dao.factory.ClienteFactory;
 import edu.usal.dao.interfaces.ClienteInterfaz;
 import edu.usal.negocio.dominio.Cliente;
@@ -22,54 +20,62 @@ public class ListarClienteListener implements ActionListener{
 	
 	public ListarClienteListener() throws IOException{
 		clienteInterfaz = ClienteFactory.GetImplementation("MSSQL");
-		listarClienteVista = new ListarClientes();
+		listarClienteVista = MenuListener.listarClientes;
 		mensaje = new Mensajes();
 
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
+				
+		if(listarClienteVista.modelo.getColumnCount() != 6) {
 		
-//		ArrayList<Cliente> lista = new ArrayList<Cliente>();
-//		
-//		try {
-//			
-//			lista = clienteInterfaz.ListarClientes();
-//			listarClienteVista.agregarElemento(lista);
-//			
-//		} catch (SQLException e1) {
-//			e1.printStackTrace();
-//		}
-//		
-//		listarClienteVista.modelo.removeAllElements();
-//		
-//		String datos = "";
-//		
-//		DefaultListModel<String> modelo = new DefaultListModel<String>();
-//
-//		
-//		
-//		for(int i=0;i<lista.size() ;i++) {
-//			
-//			datos = lista.get(i).getInfo();
-//			
-//		listarClienteVista.modelo.addElement(datos);
-//		
-//		}
-//		System.out.println(listarClienteVista.modelo.getElementAt(1));
-//		
-//		
-//		modelo.addElement("asd");	
-//		modelo.addElement("asd2");	
-//
-//		listarClienteVista.list.setModel(modelo);
-//		
-////		listarClienteVista.repaint();
-////		listarClienteVista.revalidate();
-//		
-//		mensaje.Realizado();
+		listarClienteVista.modelo.addColumn("Nombre");
+		listarClienteVista.modelo.addColumn("DNI");
+		listarClienteVista.modelo.addColumn("Email");
+		listarClienteVista.modelo.addColumn("Fecha Nac.");
+		listarClienteVista.modelo.addColumn("Cuit/Cuil");
+		listarClienteVista.modelo.addColumn("Telefono");
+		}
+		
+		ArrayList<Cliente> lista = null;
+		
+		
+		try {
+			lista = clienteInterfaz.ListarClientes();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		
+	
+    Object[] object = new Object[6];      
+    
+    listarClienteVista.modelo.setRowCount(0);
+ //   listarClienteVista.modelo.setColumnCount(0);
+
+	
+    if (lista.size() != 0) {
+       for (int i = 0; i < lista.size(); i++) {
+
+
+    	   	object[0] = lista.get(i).getNombreyApellido();
+            object[1] = lista.get(i).getDni();
+            object[2] = lista.get(i).getEmail();
+            object[3] = lista.get(i).getFechaNac();
+            object[4] = lista.get(i).getCuit_cuil();
+            object[5] = lista.get(i).getIdTelefono();
+
+            
+            listarClienteVista.modelo.addRow(object);
+    		
+        }
+		
+
+    }
+
+		}
 		
 	}
 	
 	
-}
+

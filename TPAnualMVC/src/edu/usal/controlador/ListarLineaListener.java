@@ -24,7 +24,7 @@ public class ListarLineaListener implements ActionListener{
 	
 	public ListarLineaListener() throws IOException{
 		linInter = LineasAereasFactory.GetImplementation("MSSQL");
-		listarLineaVista = new ListarLinea();
+		listarLineaVista = MenuListener.listarLinea;
 		mensaje = new Mensajes();
 
 	}
@@ -32,49 +32,37 @@ public class ListarLineaListener implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-//		ArrayList<LineasAereas> lista = null;
-//		
-//			
-//			try {
-//				lista = linInter.ListarLineas();
-//			} catch (SQLException e1) {
-//				e1.printStackTrace();
-//			}
-//			
-//		
-//        Object[] object = new Object[lista.size()];
-//                
-//		listarLineaVista.modelo = (DefaultTableModel) listarLineaVista.tabla.getModel();
-//		
-//        listarLineaVista.modelo.setRowCount(0);
-//		
-//        if (lista.size() != 0) {
-//           for (int i = 0; i < object.length; i++) {
-//            	
-//                object[0] = lista.get(i).getNombre();
-//                object[1] = lista.get(i).getAlianza();
-//                object[2] = lista.get(i).getVuelos();
-//                
-//        		listarLineaVista.modelo.addRow(object);
-//        		
-//        //		System.out.println(lista.get(i).getNombre());
-//
-//            }
-//   		
-//
-//        }
-// 
-//   		mensaje.Realizado();
+	if(listarLineaVista.modelo.getColumnCount() != 3) {	
+	listarLineaVista.modelo.addColumn("Nombre");
+	listarLineaVista.modelo.addColumn("Alianza");
+	listarLineaVista.modelo.addColumn("Vuelos");
+	}	
+		ArrayList<LineasAereas> lista = null;
+		
+		
+		try {
+			lista = linInter.ListarLineas();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		
+	
+    Object[] object = new Object[3];
+            	
+    listarLineaVista.modelo.setRowCount(0);
+	
+    if (lista.size() != 0) {
+       for (int i = 0; i < lista.size(); i++) {
+        	
+            object[0] = lista.get(i).getNombre();
+            object[1] = lista.get(i).getAlianza();
+            object[2] = lista.get(i).getVuelos();
+            
+            listarLineaVista.modelo.addRow(object);
+    		
+        }
 
-		
-//		Vector<String> aStrings = new Vector<String>();
-//		aStrings.add("F");
-//		listarLineaVista.modelo = (DefaultTableModel) listarLineaVista.tabla.getModel();
-//		listarLineaVista.modelo.setRowCount(0);
-//		listarLineaVista.modelo.addRow(aStrings);
-//		listarLineaVista.tabla.repaint();
-//		mensaje.Realizado();
-		
-		
-	}
+    }
 }
+}
+
