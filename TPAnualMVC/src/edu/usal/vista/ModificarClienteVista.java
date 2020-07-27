@@ -21,6 +21,7 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import java.awt.Font;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import cambodia.raven.DateChooser;
 
 public class ModificarClienteVista extends JPanel {
 	public JButton btnEnviar;
@@ -32,6 +33,10 @@ public class ModificarClienteVista extends JPanel {
 	public ItemsClienteListener itemsClienteListener;
 	public JComboBox comboBox;
 	private JLabel lblCliente;
+	/**
+	 * @wbp.nonvisual location=40,524
+	 */
+	private final DateChooser dateChooser = new DateChooser();
 	
 	public ModificarClienteVista() throws IOException, SQLException {
 		setBackground(Color.BLACK);
@@ -74,6 +79,7 @@ public class ModificarClienteVista extends JPanel {
 		textField_2.setColumns(10);
 		
 		textField_3 = new JTextField();
+		dateChooser.setTextRefernce(textField_3);
 		textField_3.setColumns(10);
 		
 		textField_4 = new JTextField();
@@ -82,6 +88,9 @@ public class ModificarClienteVista extends JPanel {
 		lblCliente = new JLabel("Cliente:");
 		lblCliente.setForeground(Color.ORANGE);
 		lblCliente.setFont(new Font("Tahoma", Font.BOLD, 11));
+		
+		JButton btnNewButton = new JButton("...");
+		dateChooser.setButton(btnNewButton);
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -115,7 +124,9 @@ public class ModificarClienteVista extends JPanel {
 						.addComponent(textField_2, GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
 						.addComponent(textField_3, GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
 						.addComponent(textField_4, GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE))
-					.addGap(356))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(btnNewButton)
+					.addGap(252))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -139,7 +150,8 @@ public class ModificarClienteVista extends JPanel {
 					.addGap(18)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblNombre_3, GroupLayout.DEFAULT_SIZE, 14, Short.MAX_VALUE)
-						.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnNewButton))
 					.addGap(18)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblNombre_4, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -162,5 +174,4 @@ public class ModificarClienteVista extends JPanel {
 		comboBox.addItemListener(al);
 		
 	}
-
 }

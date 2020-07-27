@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import edu.usal.dao.factory.ClienteFactory;
 import edu.usal.dao.interfaces.ClienteInterfaz;
 import edu.usal.negocio.dominio.Cliente;
+import edu.usal.negocio.dominio.Telefono;
 import edu.usal.vista.ListarClientes;
 import edu.usal.vista.Mensajes;
 
@@ -57,13 +58,14 @@ public class ListarClienteListener implements ActionListener{
     if (lista.size() != 0) {
        for (int i = 0; i < lista.size(); i++) {
 
+    	   Telefono telefono = lista.get(i).getTelefono();
 
     	   	object[0] = lista.get(i).getNombreyApellido();
             object[1] = lista.get(i).getDni();
             object[2] = lista.get(i).getEmail();
             object[3] = lista.get(i).getFechaNac();
             object[4] = lista.get(i).getCuit_cuil();
-            object[5] = lista.get(i).getIdTelefono();
+            object[5] = telefono.getIdTelefono();
 
             
             listarClienteVista.modelo.addRow(object);

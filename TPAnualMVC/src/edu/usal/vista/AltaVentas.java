@@ -32,7 +32,7 @@ public class AltaVentas extends JPanel {
 	public JComboBox comboClientes;
 	ItemsClienteListener itemsClienteListener;
 	ItemsVuelos itemsVuelos;
-	private JComboBox comboVuelo;
+	public JComboBox comboVuelo;
 
 	/**
 	 * Create the panel.

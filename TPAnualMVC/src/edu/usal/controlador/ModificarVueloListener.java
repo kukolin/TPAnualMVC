@@ -52,8 +52,11 @@ public class ModificarVueloListener implements ActionListener{
 		}
 		
 		int idSelec = alVueloss.get(modificarVuelosVista.comboBox.getSelectedIndex()).getIdVuelo();
-		int idSelecLineas = alLineasAereas.get(modificarVuelosVista.comboBox_1.getSelectedIndex()).getIdLinea();
-		Vuelos vuelos = new Vuelos("","",0, null, null, "", "",0,0);		
+		
+		int idSelecLineas = modificarVuelosVista.comboBox_1.getSelectedIndex();
+		LineasAereas lineasAereas = alLineasAereas.get(idSelecLineas);
+		
+		Vuelos vuelos = new Vuelos("", "", 0, null, null, "", "", lineasAereas);
 		
 		
 		if(modificarVuelosVista.textField_1.getText().matches("[0-9]+"))
@@ -67,11 +70,10 @@ public class ModificarVueloListener implements ActionListener{
 		vuelos.setFechaSalida(Date.valueOf(modificarVuelosVista.textField_4.getText().toString()));
 		vuelos.setFechaLlegada(Date.valueOf(modificarVuelosVista.textField_5.getText().toString()));
 		vuelos.setTiempo(modificarVuelosVista.textField_6.getText());
-		vuelos.setLineasAereas(idSelecLineas);
 		
 		mensaje.Realizado();
 		
-		vuelosInterfaz.ModificarVuelo(idSelec, vuelos);
+		vuelosInterfaz.ModificarVuelo(idSelec, vuelos, lineasAereas);
 			
 		} catch (SQLException e1) {
 			e1.printStackTrace();

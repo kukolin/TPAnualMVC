@@ -3,8 +3,9 @@ package edu.usal.controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.sql.Date;
+import java.util.Date;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -50,29 +51,48 @@ public class AltaVueloListener implements ActionListener{
 			e2.printStackTrace();
 		}
 
-		int idSelecLineas = alLineasAereas.get(altaVueloVista.comboBox.getSelectedIndex()).getIdLinea();
+		int idSelecLineas = altaVueloVista.comboBox.getSelectedIndex();
+		LineasAereas lineasAereas = alLineasAereas.get(idSelecLineas);
 		
 		if(altaVueloVista.tfCantidadAsientos.getText().matches("[0-9]+"))
 		{
 			try {
 			
+				String pattern = "dd-MM-yyyy";
+				SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+				
+				Date dateSalida = simpleDateFormat.parse(altaVueloVista.tfFechaSalida.getText());
+				java.sql.Date dateSalida2= new java.sql.Date(dateSalida.getTime());
+				
+				Date dateLlegada = simpleDateFormat.parse(altaVueloVista.tfFechaLlegada.getText());
+				java.sql.Date dateLlegada2= new java.sql.Date(dateLlegada.getTime());
+				
+				java.sql.Date hoy = new java.sql.Date(Calendar.getInstance().getTime().getTime());
+				
 				
 				String numero = altaVueloVista.tfNumero.getText();
 				String tiempo = altaVueloVista.tfTiempoVuelo.getText();
 				int cantAsientos = Integer.parseInt(altaVueloVista.tfCantidadAsientos.getText());
-				Date fechaSalida = Date.valueOf(altaVueloVista.tfFechaSalida.getText());
-				Date fechaLlegada = Date.valueOf(altaVueloVista.tfFechaLlegada.getText());
 				String aeroSalida = altaVueloVista.tfAeropuertoSalida.getText();
 				String aeroLlegada = altaVueloVista.tfAeropuertoLlegada.getText();
-				int lineasAereas = idSelecLineas;	
+//				int lineasAereas = idSelecLineas;	
 				
 				
 				
-			Vuelos vuelos = new Vuelos(numero, tiempo, cantAsientos, fechaSalida, fechaLlegada, aeroSalida, aeroLlegada, lineasAereas, 0);
-				
-			vuelosInter.AltaVuelos(vuelos);
+			Vuelos vuelos = new Vuelos(numero, tiempo, cantAsientos, dateSalida2, dateLlegada2, aeroSalida, aeroLlegada, lineasAereas);
 			
-			mensaje.Realizado();
+			if(dateLlegada.getTime() > hoy.getTime() || dateSalida.getTime() > hoy.getTime()) {
+				mensaje.ErrorDeFecha();
+			}
+			else
+			if(dateLlegada.getTime() > dateSalida.getTime()) {
+				mensaje.LlegadaMayorASalida();
+			}
+			else {
+				vuelosInter.AltaVuelos(vuelos, lineasAereas);
+				mensaje.Realizado();
+			}
+
 			
 			} catch (Exception e1) {
 				

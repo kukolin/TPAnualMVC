@@ -20,6 +20,8 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import java.awt.Font;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import com.toedter.calendar.JCalendar;
+import cambodia.raven.DateChooser;
 
 public class AltaClienteVista extends JPanel {
 	public JButton btnEnviar;
@@ -58,6 +60,19 @@ public class AltaClienteVista extends JPanel {
 	public JComboBox paisEmic;
 	public JComboBox paisDir;
 	public JComboBox provincias;
+
+	/**
+	 * @wbp.nonvisual location=40,694
+	 */
+	public final DateChooser dcFechaEmic = new DateChooser();
+	/**
+	 * @wbp.nonvisual location=180,694
+	 */
+	private final DateChooser dcFechaNac = new DateChooser();
+	/**
+	 * @wbp.nonvisual location=280,694
+	 */
+	private final DateChooser dcFechaVen = new DateChooser();
 
 	public AltaClienteVista() throws IOException, SQLException {
 		setBackground(Color.BLACK);
@@ -132,6 +147,7 @@ public class AltaClienteVista extends JPanel {
 		tCuit.setColumns(10);
 		
 		tFechaNac = new JTextField();
+		dcFechaNac.setTextRefernce(tFechaNac);
 		tFechaNac.setColumns(10);
 		
 		tEmail = new JTextField();
@@ -206,9 +222,11 @@ public class AltaClienteVista extends JPanel {
 		tAutoridad.setColumns(10);
 		
 		tFechaEmic = new JTextField();
+		dcFechaEmic.setTextRefernce(tFechaEmic);
 		tFechaEmic.setColumns(10);
 		
 		tFechaVen = new JTextField();
+		dcFechaVen.setTextRefernce(tFechaVen);
 		tFechaVen.setColumns(10);
 		
 		tCalle = new JTextField();
@@ -232,6 +250,15 @@ public class AltaClienteVista extends JPanel {
 		
 		provincias = new JComboBox(JCombobox2());
 		provincias.setEnabled(false);
+		
+		JButton btnFechaEmic = new JButton("...");
+		dcFechaEmic.setButton(btnFechaEmic);
+		
+		JButton btnFechaEmic_1 = new JButton("...");
+		dcFechaVen.setButton(btnFechaEmic_1);
+		
+		JButton btnFechaEmic_2 = new JButton("...");
+		dcFechaNac.setButton(btnFechaEmic_2);
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -254,97 +281,101 @@ public class AltaClienteVista extends JPanel {
 					.addGap(27)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(tCategoriaFrec, GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
+							.addComponent(tCategoriaFrec, GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE)
 							.addGap(114))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 								.addGroup(groupLayout.createSequentialGroup()
-									.addComponent(tAlianza)
+									.addComponent(tAlianza, GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE)
 									.addGap(18)
 									.addComponent(lblOtro, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE))
 								.addGroup(groupLayout.createSequentialGroup()
-									.addComponent(tLaboral)
+									.addComponent(tLaboral, GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE)
 									.addGap(18)
 									.addComponent(lblProvincia, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE))
 								.addGroup(groupLayout.createSequentialGroup()
-									.addComponent(tCelular)
+									.addComponent(tCelular, GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE)
 									.addGap(18)
 									.addComponent(lblNombre_17, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE))
 								.addGroup(groupLayout.createSequentialGroup()
-									.addComponent(tPersonal)
+									.addComponent(tPersonal, GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE)
 									.addGap(18)
 									.addComponent(lblNombre_16, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE))
 								.addGroup(groupLayout.createSequentialGroup()
-									.addComponent(tEmail)
+									.addComponent(tEmail, GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE)
 									.addGap(18)
 									.addComponent(lblNombre_15, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE))
 								.addGroup(groupLayout.createSequentialGroup()
-									.addComponent(tFechaNac)
-									.addGap(18)
-									.addComponent(lblNombre_14, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE))
-								.addGroup(groupLayout.createSequentialGroup()
-									.addComponent(tCuit)
-									.addGap(18)
-									.addComponent(lblNombre_13, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE))
-								.addGroup(groupLayout.createSequentialGroup()
-									.addComponent(tNumeroPas)
+									.addComponent(tNumeroPas, GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE)
 									.addGap(18)
 									.addComponent(lblNombre_12, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE))
 								.addGroup(groupLayout.createSequentialGroup()
-									.addComponent(tDni)
+									.addComponent(tDni, GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE)
 									.addGap(18)
 									.addComponent(lblNombre_11, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE))
 								.addGroup(groupLayout.createSequentialGroup()
-									.addComponent(tNombre)
+									.addComponent(tNombre, GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE)
 									.addGap(18)
 									.addComponent(lblNombre_10, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE))
-								.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+								.addGroup(groupLayout.createSequentialGroup()
 									.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-										.addComponent(tNumeroFrec, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
-										.addComponent(tAerolinea))
+										.addComponent(tAerolinea, GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE)
+										.addComponent(tNumeroFrec, GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE))
 									.addGap(18)
-									.addComponent(lblCodPostal, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)))
+									.addComponent(lblCodPostal, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE))
+								.addGroup(groupLayout.createSequentialGroup()
+									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+										.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+											.addComponent(tFechaNac, GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
+											.addGap(18)
+											.addComponent(btnFechaEmic_2))
+										.addComponent(tCuit, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE))
+									.addGap(18)
+									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+										.addComponent(lblNombre_13, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)
+										.addComponent(lblNombre_14, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE))))
 							.addGap(10)))
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(18)
-									.addComponent(paisDir, 0, 104, Short.MAX_VALUE))
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(11)
-									.addComponent(btnEnviar, GroupLayout.PREFERRED_SIZE, 102, GroupLayout.PREFERRED_SIZE))
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(18)
-									.addComponent(tFechaEmic, GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE))
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(18)
-									.addComponent(tFechaVen, GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE))
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(18)
-									.addComponent(tCalle, GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE))
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(18)
-									.addComponent(tAltura, GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE))
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(18)
-									.addComponent(tCiudad, GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE))
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(18)
-									.addComponent(provincia2, GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE))
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(18)
-									.addComponent(tCodPostal, GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE))
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(18)
-									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-										.addComponent(paisEmic, 0, 102, Short.MAX_VALUE)
-										.addComponent(tAutoridad, GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE))))
-							.addGap(60))
+							.addGap(18)
+							.addComponent(paisDir, 0, 280, Short.MAX_VALUE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(11)
+							.addComponent(btnEnviar, GroupLayout.PREFERRED_SIZE, 102, GroupLayout.PREFERRED_SIZE))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(18)
-							.addComponent(provincias, 0, 39, Short.MAX_VALUE)
-							.addGap(60))))
+							.addComponent(tFechaEmic, GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(18)
+							.addComponent(tFechaVen, GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(18)
+							.addComponent(tCalle, GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(18)
+							.addComponent(tAltura, GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(18)
+							.addComponent(tCiudad, GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(18)
+							.addComponent(provincia2, GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(18)
+							.addComponent(tCodPostal, GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(18)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addComponent(paisEmic, 0, 280, Short.MAX_VALUE)
+								.addComponent(tAutoridad, GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(18)
+							.addComponent(provincias, 0, 280, Short.MAX_VALUE)))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(btnFechaEmic_1, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnFechaEmic))
+					.addContainerGap())
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -353,7 +384,7 @@ public class AltaClienteVista extends JPanel {
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(8)
-							.addComponent(lblNombre, GroupLayout.DEFAULT_SIZE, 14, Short.MAX_VALUE))
+							.addComponent(lblNombre, GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE))
 						.addComponent(tNombre, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblNombre_10, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE)
 						.addComponent(paisEmic, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
@@ -361,7 +392,7 @@ public class AltaClienteVista extends JPanel {
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(8)
-							.addComponent(lblDni, GroupLayout.DEFAULT_SIZE, 14, Short.MAX_VALUE))
+							.addComponent(lblDni, GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE))
 						.addComponent(tDni, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblNombre_11, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE)
 						.addComponent(tAutoridad, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
@@ -369,31 +400,34 @@ public class AltaClienteVista extends JPanel {
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(8)
-							.addComponent(lblNumeroPasaporte, GroupLayout.DEFAULT_SIZE, 14, Short.MAX_VALUE))
+							.addComponent(lblNumeroPasaporte, GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE))
 						.addComponent(tNumeroPas, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblNombre_12, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE)
-						.addComponent(tFechaEmic, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(tFechaEmic, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnFechaEmic))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(8)
-							.addComponent(lblNombre_1, GroupLayout.DEFAULT_SIZE, 14, Short.MAX_VALUE))
+							.addComponent(lblNombre_1, GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE))
 						.addComponent(tCuit, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblNombre_13, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE)
-						.addComponent(tFechaVen, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(tFechaVen, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnFechaEmic_1))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(8)
-							.addComponent(lblNombre_2, GroupLayout.DEFAULT_SIZE, 14, Short.MAX_VALUE))
-						.addComponent(tFechaNac, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addComponent(lblNombre_2, GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE))
 						.addComponent(lblNombre_14, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE)
-						.addComponent(tCalle, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(tCalle, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(tFechaNac, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnFechaEmic_2))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(8)
-							.addComponent(lblNombre_3, GroupLayout.DEFAULT_SIZE, 14, Short.MAX_VALUE))
+							.addComponent(lblNombre_3, GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE))
 						.addComponent(tEmail, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblNombre_15, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE)
 						.addComponent(tAltura, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
@@ -401,7 +435,7 @@ public class AltaClienteVista extends JPanel {
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(8)
-							.addComponent(lblNombre_4, GroupLayout.DEFAULT_SIZE, 14, Short.MAX_VALUE))
+							.addComponent(lblNombre_4, GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE))
 						.addComponent(tPersonal, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblNombre_16, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE)
 						.addComponent(tCiudad, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
@@ -409,7 +443,7 @@ public class AltaClienteVista extends JPanel {
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(8)
-							.addComponent(lblNombre_5, GroupLayout.DEFAULT_SIZE, 14, Short.MAX_VALUE))
+							.addComponent(lblNombre_5, GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE))
 						.addComponent(tCelular, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblNombre_17, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE)
 						.addComponent(paisDir, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
@@ -417,7 +451,7 @@ public class AltaClienteVista extends JPanel {
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(8)
-							.addComponent(lblNombre_6, GroupLayout.DEFAULT_SIZE, 14, Short.MAX_VALUE))
+							.addComponent(lblNombre_6, GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE))
 						.addComponent(tLaboral, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblProvincia, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE)
 						.addComponent(provincias, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
@@ -425,7 +459,7 @@ public class AltaClienteVista extends JPanel {
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(8)
-							.addComponent(lblNombre_7, GroupLayout.DEFAULT_SIZE, 14, Short.MAX_VALUE))
+							.addComponent(lblNombre_7, GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE))
 						.addComponent(tAlianza, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblOtro, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE)
 						.addComponent(provincia2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
@@ -433,7 +467,7 @@ public class AltaClienteVista extends JPanel {
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(8)
-							.addComponent(lblNombre_8, GroupLayout.DEFAULT_SIZE, 14, Short.MAX_VALUE))
+							.addComponent(lblNombre_8, GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE))
 						.addComponent(tAerolinea, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblCodPostal, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE)
 						.addComponent(tCodPostal, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
@@ -441,13 +475,13 @@ public class AltaClienteVista extends JPanel {
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(8)
-							.addComponent(lblNombre_9, GroupLayout.DEFAULT_SIZE, 14, Short.MAX_VALUE))
+							.addComponent(lblNombre_9, GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE))
 						.addComponent(tNumeroFrec, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(11)
-							.addComponent(lblCategoriaPFrecuente, GroupLayout.DEFAULT_SIZE, 14, Short.MAX_VALUE))
+							.addComponent(lblCategoriaPFrecuente, GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE))
 						.addComponent(tCategoriaFrec, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(btnEnviar))
 					.addGap(7))

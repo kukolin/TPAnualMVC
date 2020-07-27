@@ -24,5 +24,20 @@ public class Mensajes {
 		JOptionPane.showMessageDialog(null,"Código creado por: \n -Anezin, Lucas \n -Ambiela, Juan Mateo\n -Di Gregorio, Fiore \n -Vidal, Augusto \n\n Version 1.2", "Acerca de...", JOptionPane.INFORMATION_MESSAGE);	
 		
 	}
+	public void ErrorDeFecha() {
+		
+		JOptionPane.showMessageDialog(null,"Error: no se pueden ingresar fechas posteriores al día de hoy.", "Error de fechas.", JOptionPane.ERROR_MESSAGE);	
+		
+	}
+	public void EmisionMayorAVen() {
+		
+		JOptionPane.showMessageDialog(null,"Error: la fecha de emisión no puede ser posterior a la de vencimiento.", "Error de fechas.", JOptionPane.ERROR_MESSAGE);	
+		
+	}
+	public void LlegadaMayorASalida() {
+		
+		JOptionPane.showMessageDialog(null,"Error: la fecha de llegada no puede ser posterior a la de salida.", "Error de fechas.", JOptionPane.ERROR_MESSAGE);	
+		
+	}
 	
 }
